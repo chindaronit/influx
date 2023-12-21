@@ -13,8 +13,8 @@ const Footer = () => {
       sx={{
         backgroundColor: "black",
         borderRadius: "0.5rem",
-          padding: "2rem",
-        borderTop:"2px solid rgba(255,255,255)"
+        padding: "2rem",
+        borderTop: "2px solid rgba(255,255,255)",
       }}
     >
       <Container maxWidth="lg">
@@ -24,7 +24,7 @@ const Footer = () => {
               About Us
             </Typography>
             <Typography variant="body2" color="rgba(255,255,255,0.7)">
-                          Hey! I'm Ronit Chinda, UnderGrad at IIIT Guwahati,India.
+              Hey! I'm Ronit Chinda, UnderGrad at IIIT Guwahati,India.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={4}>
@@ -42,23 +42,27 @@ const Footer = () => {
             <Typography variant="h6" color="rgba(255,255,255)" gutterBottom>
               Follow Us
             </Typography>
-            <Link href="https://www.facebook.com/" color="inherit">
+            <Link href="https://github.com/chindaronit" color="inherit">
               <GitHub />
             </Link>
             <Link
-              href="https://www.instagram.com/"
+              href="https://www.linkedin.com/in/chindaronit/"
               color="inherit"
               sx={{ pl: 1, pr: 1 }}
             >
               <LinkedIn />
             </Link>
-            <Link href="https://www.twitter.com/" color="inherit">
+            <Link href="https://twitter.com/ChindaRonit" color="inherit">
               <Twitter />
             </Link>
           </Grid>
         </Grid>
         <Box mt={5}>
-          <Typography variant="body2" color="rgba(255,255,255,0.7)" align="center">
+          <Typography
+            variant="body2"
+            color="rgba(255,255,255,0.7)"
+            align="center"
+          >
             {"Copyright © "}
             <Link
               color="inherit"

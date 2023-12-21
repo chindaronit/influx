@@ -1,24 +1,24 @@
 const SearchBarData = [
-  {
-    id: "13",
-    background:
-      "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(213,150,109,1) 24%, rgba(255,100,0,1) 100%)",
-    genre: "Recommended",
-    path: "/section/Recommended Movies",
-  },
+  // {
+  //   id: "13",
+  //   background:
+  //     "linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(213,150,109,1) 24%, rgba(255,100,0,1) 100%)",
+  //   genre: "Recommended",
+  //   path: "/section/Recommended Movies",
+  // },
   {
     id: "14",
     background:
       "linear-gradient(0deg, rgba(185,185,185,1) 0%, rgba(199,148,40,1) 100%)",
-    genre: "Latest",
-    path: "/section/latest",
+    genre: "Trending",
+    path: "trending/movie/week",
   },
   {
     id: "15",
     background:
       "linear-gradient(0deg, rgba(0,252,255,1) 0%, rgba(0,0,0,1) 100%)",
-    genre: "Bollywood",
-    path: "/section/Bollywood Releases",
+    genre: "Popular",
+    path: "/section/Popular",
   },
   {
     id: "1",

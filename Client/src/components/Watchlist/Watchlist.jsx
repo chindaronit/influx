@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer";
-import ShowComponent from "../Filter/ShowComponent";
+import Slide from "../Movies/Slide";
+
 
 const Watchlist = ({ section, email }) => {
   const [data, setData] = useState([]);
@@ -22,16 +21,14 @@ const Watchlist = ({ section, email }) => {
   }, []);
 
   return (
-    <div className="page">
-      <NavBar email={email} />
-      <div className="main-content">
-        <ShowComponent
-          section={section}
-          email={email}
-          Watchlist={true}
-          data={data}
-        />
-        <Footer />
+    <div className="container">
+      <div className="content-heading">
+        <h1>Watchlist</h1>
+      </div>
+      <div className="wrapper">
+        {data.map((item, index) => {
+          return <div className="item" key={index}></div>;
+        })}
       </div>
     </div>
   );

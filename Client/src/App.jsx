@@ -1,52 +1,129 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import Signin from "./components/auth/Signin";
-import Signup from "./components/auth/Signup";
-import Watchlist from "./components/Watchlist/Watchlist";
-import Subscription from "./components/Subscription/Subscription";
-import Main from "./components/MainPage";
+import { fetchDataFromApi } from "./utils/api";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  getApiConfiguration,
+  getGenres,
+} from "./features/homePage/homePageSlice";
+import { useDispatch } from "react-redux";
+import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
 import Search from "./components/Search/Search";
-import Showallfromsection from "./components/MainContent/Showallfromsection";
-import MainComponent from "./components/Filter/MainComponent";
-import LatestRelease from "./components/Filter/LatestRelease";
-import TopRated from "./components/Filter/TopRated";
+import Sidebar from "./components/Sidebar/Sidebar";
+import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
 import LoadMovie from "./components/Watch/LoadMovie";
-import { useLocation } from "react-router-dom";
+import ViewAll from "./components/Search/ViewAll";
+import Explore from "./components/Explore/Explore";
+import Subscription from "./components/Subscription/Subscription";
+import Added from "./components/Watchlist/Added";
+import Watchlist from "./components/Watchlist/Watchlist";
 
 function App() {
-  const location = useLocation();
-  const email = location.state?.email || "";
-  
+  const [showWatchListAlert, setShowWatchListAlert] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
+  const [text, setText] = useState(null);
+
+  const handleAlert = () => {
+    setShowWatchListAlert(true);
+
+    // Clear the previous timeout, if any
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    // Set a new timeout
+    const newTimeoutId = setTimeout(() => {
+      setShowWatchListAlert(false);
+    }, 5000);
+
+    // Save the timeoutId for potential cleanup
+    setTimeoutId(newTimeoutId);
+  };
+
+  const dispatch = useDispatch();
+
+  const fetchApiConfig = async () => {
+    const data = await fetchDataFromApi("/configuration");
+    const url = {
+      backdrop: data.images.secure_base_url + "original",
+      poster: data.images.secure_base_url + "original",
+      profile: data.images.secure_base_url + "original",
+    };
+    dispatch(getApiConfiguration(url));
+  };
+
+  const fetchApiGenres = async () => {
+    let promises = [];
+    let endpoints = ["tv", "movie"];
+    let Genres = {};
+
+    endpoints.forEach((url) => {
+      promises.push(fetchDataFromApi(`/genre/${url}/list`));
+    });
+
+    // promise.all return to data when genre from both endpoints is present
+    const data = await Promise.all(promises);
+    data.map(({ genres }) => {
+      return genres.map((item) => (Genres[item.id] = item));
+    });
+
+    dispatch(getGenres(Genres));
+  };
+
+  useEffect(() => {
+    fetchApiConfig();
+    fetchApiGenres();
+  }, []);
+
   return (
-    <Routes>
-      <Route path="" element={<Main email={email} />} />
-      <Route path="signin" element={<Signin />} />
-      <Route path="signup" element={<Signup />} />
-      <Route path="/search" element={<Search email={email} />} />
-      <Route path="/section/latest" element={<LatestRelease email={email} />} />
+    <Router>
+      {showWatchListAlert && <Added text={text} />}
+      <ContentWrapper>
+        <Navbar />
 
-      <Route path="/section/toprated" element={<TopRated email={email} />} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home handleAlert={handleAlert} setText={setText} />}
+          />
+          <Route path="/search" element={<Search />} />
+          <Route
+            path="/search/:query"
+            element={<ViewAll handleAlert={handleAlert} setText={setText} />}
+          />
+          <Route
+            path="/:media/:id"
+            element={<LoadMovie handleAlert={handleAlert} setText={setText} />}
+          />
+          <Route
+            path="/explore/:mediaType"
+            element={<Explore handleAlert={handleAlert} setText={setText} />}
+          />
+          <Route
+            path="/subscription"
+            element={
+              <Subscription handleAlert={handleAlert} setText={setText} />
+            }
+          />
+          <Route
+            path="/watchlist"
+            element={
+              <Watchlist
+                section={"Subscription Plans"}
+                handleAlert={handleAlert}
+                setText={setText}
+              />
+            }
+          />
+        </Routes>
 
-      <Route
-        path="/section/:sectionValue"
-        element={<Showallfromsection email={email} />}
-      />
+        <Footer />
+      </ContentWrapper>
 
-      <Route
-        path="/section/filter/:genreValue"
-        element={<MainComponent email={email} />}
-      />
-
-      <Route
-        path="/watchlist"
-        element={<Watchlist section="My Watchlist" email={email} />}
-      />
-      <Route
-        path="/subscription"
-        element={<Subscription section="Subscription Plans" email={email} />}
-      />
-      <Route path="/watch/:id" element={<LoadMovie email={email} />} />
-    </Routes>
+      <Sidebar />
+    </Router>
   );
 }
 

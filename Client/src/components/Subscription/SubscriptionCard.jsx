@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 
-const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
+const SubscriptionCard = ({
+  email,
+  data,
+  upgrade,
+  dateAdded,
+  handleAlert,
+  setText,
+}) => {
   const [noOfDaysLeft, setNoOfDaysLeft] = useState(null);
 
   useEffect(() => {
@@ -24,7 +31,7 @@ const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
 
   const handleUpgrade = async (email, plan, dateUpgraded) => {
     try {
-      const res = await fetch("http://localhost:5001/subscription/api", {
+      const res = await fetch("http://localhost:5000/subscription/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,13 +43,11 @@ const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
         }),
       });
 
-      
-
       if (res.status === 200) {
-        window.alert("Plan Upgraded Successfully ");
         window.location.reload();
-      }
-      else {
+        setText("Plan Upgraded!");
+        handleAlert();
+      } else {
         window.alert("Error");
       }
     } catch (error) {
@@ -51,10 +56,9 @@ const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
     }
   };
 
-
   return (
     <div className="subscription-card-container">
-      {data.map((item, index) => {
+      {data?.map((item, index) => {
         return (
           <div
             className={"subscription-card"}
@@ -68,9 +72,9 @@ const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
               <h2>{item.plan}</h2>
             </div>
 
-            <div className="d-flex jc-center">
+            <div className="d-flex jc-center mb-2">
               <item.quality className="quality-icon" />
-              <h3>Quality</h3>
+              <h3 className="quality">Quality</h3>
             </div>
 
             <ul>
@@ -81,12 +85,12 @@ const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
               ))}
             </ul>
 
-            <h3 style={{ textAlign: "center", marginTop: "2rem" }}>
+            <h3 className="mt-2" style={{ textAlign: "center" }}>
               No of Devices - {item.devices}
             </h3>
 
-            <ul className="d-flex jc-center">
-              {item.icons.map((icon, iconIndex) => (
+            <ul className="d-flex jc-center mb-2">
+              {item?.icons.map((icon, iconIndex) => (
                 <li className="icon" key={iconIndex}>
                   {React.cloneElement(icon, {
                     style: { fontSize: "50px" },
@@ -104,7 +108,8 @@ const SubscriptionCard = ({ email, data, upgrade, dateAdded }) => {
                   style={{ backgroundColor: item.color }}
                   onClick={() => {
                     const dateUpgraded = new Date();
-                    handleUpgrade(email,item.plan,dateUpgraded);
+                    setText("PLAN UPGRADED");
+                    handleAlert();
                   }}
                 >
                   Upgrade

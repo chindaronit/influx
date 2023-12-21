@@ -1,6 +1,7 @@
-import MovieCreationIcon from "@mui/icons-material/MovieCreation";
-import TvIcon from "@mui/icons-material/Tv";
 import RecommendIcon from "@mui/icons-material/Recommend";
+import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
+import StarIcon from "@mui/icons-material/Star";
+import UpcomingIcon from "@mui/icons-material/Upcoming";
 
 export const OptionsData = [
   {
@@ -12,13 +13,19 @@ export const OptionsData = [
   {
     id: 2,
     path: "section/latest",
-    value: "Latest Releases",
-    icon: TvIcon,
+    value: "Trending",
+    icon: LocalFireDepartmentIcon,
   },
   {
     id: 3,
     path: "section/toprated",
     value: "Top Rated",
-    icon: MovieCreationIcon,
+    icon: StarIcon,
+  },
+  {
+    id: 4,
+    path: "section/toprated",
+    value: "Upcoming",
+    icon: UpcomingIcon,
   },
 ];

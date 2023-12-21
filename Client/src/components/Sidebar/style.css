@@ -1,0 +1,91 @@
+.sidebar {
+  flex-direction: column;
+  position: fixed;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  width: 15vw;
+  top: 0;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  color: white; 
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .txt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.nav-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-user .user-icon {
+  font-size: 70px;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  transition: transform 0.25s ease-in;
+}
+
+.nav-user .user-icon:hover {
+  transform: scale(1.1);
+}
+
+.nav-user .user-name h3 {
+  font-size: 25px;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+}
+
+.nav-list .nav-item {
+  list-style-type: none;
+  margin: 0.75rem 0;
+  background-color: #42434420;
+  border-radius: 0.5rem;
+  padding: 1.2rem 0;
+  cursor: pointer;
+}
+
+.nav-list .nav-item div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 1rem;
+}
+
+.nav-list .nav-item .icon-div {
+  align-items: center;
+}
+
+.nav-list .nav-item .icon-value {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-list .nav-item:hover {
+  background-color: #1976d2;
+  border-radius: 0.5rem;
+  .icon-div .icon {
+    color: rgba(255, 255, 255);
+  }
+  .icon-value {
+    color: rgba(255, 255, 255);
+  }
+}
+
+.nav-list .nav-item .icon-div .icon {
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.6);
+}

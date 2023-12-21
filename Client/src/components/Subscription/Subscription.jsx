@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import SubscriptionDetail from "../../assets/SubscriptionDetail";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer";
 import SubscriptionCard from "./SubscriptionCard";
 import axios from "axios";
+import "./style.css";
 
-const Subscription = ({ section, email }) => {
+const Subscription = ({email, handleAlert, setText }) => {
   const [myPlan, setMyPlan] = useState([]);
   const [dateAdded, setDateAdded] = useState(null);
 
@@ -22,15 +21,15 @@ const Subscription = ({ section, email }) => {
 
       if (!subscribedPlan) {
         setMyPlan([]);
-      }
-      else {
-       const plan = SubscriptionDetail.find((item) => item.plan === subscribedPlan);
-       if (plan) {
-         myplans.push(plan);
-       }
+      } else {
+        const plan = SubscriptionDetail.find(
+          (item) => item.plan === subscribedPlan
+        );
+        if (plan) {
+          myplans.push(plan);
+        }
         setMyPlan(myplans);
       }
-     
     } catch (error) {
       console.log(error);
     }
@@ -41,40 +40,38 @@ const Subscription = ({ section, email }) => {
   }, []);
 
   return (
-    <div className="page">
-      <NavBar email={email} />
-      <div className="main-content">
-        <div className="container">
-          <div
-            className="content-heading"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(23,20,79,1) 0%, rgba(230,255,193,1) 0%, rgba(31,120,43,1) 100%",
-            }}
-          >
-            <h1>{section}</h1>
-          </div>
-          {myPlan.length != 0 && (
-            <>
-              <h2 className="plan-heading">My Plans</h2>
-              <SubscriptionCard
-                data={myPlan}
-                upgrade={false}
-                dateAdded={dateAdded}
-                key="0"
-              />
-              <h2 className="plan-heading">Other Plans</h2>
-            </>
-          )}
-          <SubscriptionCard
-            data={SubscriptionDetail}
-            upgrade={true}
-            email={email}
-            key="1"
-          />
-        </div>
-        <Footer />
+    <div className="container">
+      <div
+        className="content-heading"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(23,20,79,1) 0%, rgba(230,255,193,1) 0%, rgba(31,120,43,1) 100%",
+        }}
+      >
+        <h1>Subscription Plans</h1>
       </div>
+      {myPlan.length != 0 && (
+        <>
+          <h2 className="plan-heading">My Plans</h2>
+          <SubscriptionCard
+            data={myPlan}
+            upgrade={false}
+            dateAdded={dateAdded}
+            handleAlert={handleAlert}
+            setText={setText}
+            key="0"
+          />
+          <h2 className="plan-heading">Other Plans</h2>
+        </>
+      )}
+      <SubscriptionCard
+        data={SubscriptionDetail}
+        upgrade={true}
+        email={email}
+        handleAlert={handleAlert}
+        setText={setText}
+        key="1"
+      />
     </div>
   );
 };
