@@ -40,7 +40,7 @@ const SideBar = () => {
         <ul className="nav-list">
           {OptionsData.map((item, index) => {
             return (
-              <Link to={`/${item.path}`} key={index}>
+              <Link to={`/section/${item.path}`} key={index}>
                 <Item item={item} key={index} />
               </Link>
             );

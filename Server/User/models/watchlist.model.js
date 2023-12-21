@@ -9,7 +9,7 @@ const watchlistSchema = new Schema({
     required: true,
   },
   id: {
-    type: String,
+    type: Number,
     required: true,
     trim: true,
   },

@@ -7,24 +7,24 @@ export const OptionsData = [
   {
     id: 1,
     value: "Recommended",
-    path: "section/Recommended Movies",
+    path: "/recommended?id=",
     icon: RecommendIcon,
   },
   {
     id: 2,
-    path: "section/latest",
+    path: "trending/movie/week",
     value: "Trending",
     icon: LocalFireDepartmentIcon,
   },
   {
     id: 3,
-    path: "section/toprated",
+    path: "movie/top_rated",
     value: "Top Rated",
     icon: StarIcon,
   },
   {
     id: 4,
-    path: "section/toprated",
+    path: "movie/upcoming",
     value: "Upcoming",
     icon: UpcomingIcon,
   },

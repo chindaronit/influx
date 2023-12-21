@@ -19,6 +19,17 @@ import Explore from "./components/Explore/Explore";
 import Subscription from "./components/Subscription/Subscription";
 import Added from "./components/Watchlist/Added";
 import Watchlist from "./components/Watchlist/Watchlist";
+import Genre from "./components/Filters/Genre";
+import Trending from "./components/Filters/Trending";
+import Upcoming from "./components/Filters/Upcoming";
+import TopRated from "./components/Filters/TopRated";
+import TopRatedTv from "./components/Filters/TopRatedTv";
+import TrendingTv from "./components/Filters/TrendingTv";
+import Popular from "./components/Filters/Popular";
+import PopularTv from "./components/Filters/PopularTv";
+import NowPlaying from "./components/Filters/NowPlaying";
+import AiringTodayTv from "./components/Filters/AiringTodayTv";
+
 
 function App() {
   const [showWatchListAlert, setShowWatchListAlert] = useState(false);
@@ -116,6 +127,53 @@ function App() {
                 setText={setText}
               />
             }
+          />
+          <Route
+            path="/filter"
+            element={<Genre handleAlert={handleAlert} setText={setText} />}
+          />
+          <Route
+            path="/section/trending/movie/week"
+            element={<Trending handleAlert={handleAlert} setText={setText} />}
+          />
+          <Route
+            path="/section/movie/top_rated"
+            element={<TopRated handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/movie/upcoming"
+            element={<Upcoming handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/movie/popular"
+            element={<Popular handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/tv/popular"
+            element={<PopularTv handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/movie/now_playing"
+            element={<NowPlaying handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/tv/airing_today"
+            element={<AiringTodayTv handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/tv/top_rated"
+            element={<TopRatedTv handleAlert={handleAlert} setText={setText} />}
+          />
+
+          <Route
+            path="/section/trending/tv/week"
+            element={<TrendingTv handleAlert={handleAlert} setText={setText} />}
           />
         </Routes>
 

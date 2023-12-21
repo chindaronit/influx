@@ -8,7 +8,7 @@ const router = express.Router();
 
 router
   .route("/api")
-  .get(authenticateToken, getSubscription)
-  .post(authenticateToken, addSubscription);
+  .get(getSubscription)
+  .post(addSubscription);
 
 module.exports = router;

@@ -15,6 +15,7 @@ const Section = ({ item, handleAlert, setText }) => {
         endpoint={item.endpoint}
         handleAlert={handleAlert}
         setText={setText}
+        path={item.path}
       />
     )
   );

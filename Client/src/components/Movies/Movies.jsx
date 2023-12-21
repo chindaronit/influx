@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Slide from "./Slide";
+import { Link } from "react-router-dom";
 
 const Movies = ({
   sectionName,
@@ -14,12 +15,15 @@ const Movies = ({
   endpoint,
   handleAlert,
   setText,
+  path
 }) => {
   return (
     <div className="row-container">
       <div className="heading">
         <div className="text">{sectionName + " " + sectionMedia}</div>
-        <div className="show-all">Show All</div>
+        <Link className="link" to={`/section${path}`}>
+          <div className="show-all">Show All</div>
+        </Link>
       </div>
 
       <Swiper

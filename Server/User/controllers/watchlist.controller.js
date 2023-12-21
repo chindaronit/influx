@@ -12,11 +12,11 @@ const getList = async (req, res) => {
 };
 
 const addItem = async (req, res) => {
-  const { email, itemId } = req.body;
+  const { email, id } = req.body;
   try {
-    const item = await watchlistModel.findOne({ email, itemId }).exec();
+    const item = await watchlistModel.findOne({ email, id }).exec();
     if (!item) {
-      const newItem = new watchlistModel({ email, itemId });
+      const newItem = new watchlistModel({ email, id });
       await newItem.save();
       return res
         .status(200)
@@ -30,9 +30,9 @@ const addItem = async (req, res) => {
 };
 
 const removeItem = async (req, res) => {
-  const { email, itemId } = req.body;
+  const { email, id } = req.body;
   try {
-    await watchlistModel.findOneAndDelete({ email, itemId }).exec();
+    await watchlistModel.findOneAndDelete({ email, id }).exec();
 
     res.status(200).json({ success: true, msg: "Item Removed!" });
   } catch (err) {

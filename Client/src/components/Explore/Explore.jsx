@@ -109,8 +109,8 @@ const Explore = ({handleAlert,setText}) => {
                 {data?.results?.map((item, index) => {
                   if (item.media_type === "person") return;
                   return (
-                    <div className="item">
-                      <Slide key={index} data={item} endpoint={mediaType} handleAlert={handleAlert} setText={setText} />
+                    <div className="item" key={index}>
+                      <Slide data={item} endpoint={mediaType} handleAlert={handleAlert} setText={setText} />
                     </div>
                   );
                 })}

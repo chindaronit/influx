@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import FetchQueryData from "../../functions/FetchQueryData";
+import FetchQueryNextPageData from "../../functions/FetchQueryNextPageData";
+import { CircularProgress } from "@mui/material";
 import Slide from "../Movies/Slide";
 import InfiniteScroll from "react-infinite-scroll-component";
-import FetchQueryNextPageData from "../../functions/FetchQueryNextPageData";
-import FetchQueryData from "../../functions/FetchQueryData";
-import { CircularProgress } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
-const ViewAll = ({ handleAlert, setText }) => {
+const Genre = ({ handleAlert, setText }) => {
+  const [searchParams] = useSearchParams();
+  const genre = searchParams.get("genre");
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
-  const { query } = useParams();
-  let url = `/search/multi?query=${query}&page=${pageNum}`;
+  let url = `/discover/movie?with_genres=${parseInt(genre)}?page=${pageNum}`;
 
   useEffect(() => {
     setPageNum(1);
     FetchQueryData(setData, setPageNum, setLoading, url);
-  }, [query]);
+  }, [genre]);
 
   if (loading && !data) {
     return (
@@ -30,10 +30,6 @@ const ViewAll = ({ handleAlert, setText }) => {
   return (
     !loading && (
       <div className="container">
-        <h2 className="text bold heading ml-4 mt-2">
-          Search Result for {`'${query}'`}
-        </h2>
-
         {data?.results?.length > 0 ? (
           <>
             <InfiniteScroll
@@ -42,7 +38,6 @@ const ViewAll = ({ handleAlert, setText }) => {
               next={() => {
                 if (pageNum) {
                   FetchQueryNextPageData(data, setData, setPageNum, url);
-                  url = `/search/multi?query=${query}&page=${pageNum}`;
                 }
               }}
               hasMore={pageNum <= data?.total_pages}
@@ -55,7 +50,7 @@ const ViewAll = ({ handleAlert, setText }) => {
                     <div className="item" key={index}>
                       <Slide
                         data={item}
-                        endpoint={item.media_type}
+                        endpoint={"movie"}
                         handleAlert={handleAlert}
                         setText={setText}
                       />
@@ -73,4 +68,4 @@ const ViewAll = ({ handleAlert, setText }) => {
   );
 };
 
-export default ViewAll;
+export default Genre;
