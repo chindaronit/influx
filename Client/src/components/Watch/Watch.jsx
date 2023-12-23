@@ -42,6 +42,7 @@ const Watch = ({
         video={video?.[0]}
         handleAlert={handleAlert}
         setText={setText}
+        endpoint={endpoint}
       />
       <RelatedInfo item={item} crew={crew} poster={poster} />
       <Cast cast={cast} />

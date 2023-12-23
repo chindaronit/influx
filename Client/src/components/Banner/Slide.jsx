@@ -20,6 +20,29 @@ const Slide = ({
     }
   }, [data]);
 
+  const handleClick = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/watchlist/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "ronitchinda100@gmail.com",
+          id: data.id,
+          media_type: endpoint,
+        }),
+      });
+
+      if (res.status === 200) {
+        setText("Added to Watchlist");
+        handleAlert();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return src ? (
     <div>
       <img src={src} alt={data.title} />
@@ -48,11 +71,7 @@ const Slide = ({
             </Button>
           </Link>
           <div className="add-btn">
-            <IconButton onClick={() => {
-              console.log(true);
-              setText("Added to Watchlist")
-              handleAlert();
-            }}>
+            <IconButton onClick={handleClick}>
               <AddIcon className="btn" />
               <div className="add-to-watchlist">Add to Watchlist</div>
             </IconButton>

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Button, IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import Rating from "./Rating";
+import Rating from "../Movies/Rating";
 import Img from "../LadyLoadImage/Img";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeMovie } from "../../features/watchlist/watchlistSlice";
 
 const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
   const url = useSelector((state) => state.homePage.url);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (data.backdrop_path) {
@@ -22,7 +25,7 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const handleClick = async () => {
     try {
       const res = await fetch("http://localhost:5000/watchlist/api", {
-        method: "POST",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
@@ -34,7 +37,8 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
       });
 
       if (res.status === 200) {
-        setText("Added to Watchlist");
+        dispatch(removeMovie({id:data.id}));
+        setText("Removed From Wathclist");
         handleAlert();
       }
     } catch (error) {
@@ -54,8 +58,8 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
           </Link>
           <div className="add-btn">
             <IconButton onClick={handleClick}>
-              <AddIcon className="btn" />
-              <div className="hover">Add to Watchlist</div>
+              <RemoveIcon className="remove-btn" />
+              <div className="hover">Remove</div>
             </IconButton>
           </div>
         </div>

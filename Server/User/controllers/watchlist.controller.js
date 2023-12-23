@@ -1,7 +1,7 @@
 const { watchlistModel } = require("../models/watchlist.model");
 
 const getList = async (req, res) => {
-  const { email } = req.query.email;
+  const  email  = req.query.email;
   try {
     const data = await watchlistModel.find({ email }).exec();
     res.status(200).json(data);
@@ -12,11 +12,12 @@ const getList = async (req, res) => {
 };
 
 const addItem = async (req, res) => {
-  const { email, id } = req.body;
+  const { email, id, media_type } = req.body;
+  
   try {
     const item = await watchlistModel.findOne({ email, id }).exec();
     if (!item) {
-      const newItem = new watchlistModel({ email, id });
+      const newItem = new watchlistModel({ email, id, media_type });
       await newItem.save();
       return res
         .status(200)
@@ -30,10 +31,10 @@ const addItem = async (req, res) => {
 };
 
 const removeItem = async (req, res) => {
-  const { email, id } = req.body;
+  const { email, id, media_type } = req.body;
+  
   try {
-    await watchlistModel.findOneAndDelete({ email, id }).exec();
-
+    await watchlistModel.findOneAndDelete({ email, id , media_type }).exec();
     res.status(200).json({ success: true, msg: "Item Removed!" });
   } catch (err) {
     res.status(400).json("Error: " + err.message);

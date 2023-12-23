@@ -79,6 +79,14 @@
       padding: 0.25rem;
       background-color: rgba(255, 255, 255);
     }
+    .add-btn .remove-btn {
+      color: red;
+      min-width: 2rem;
+      min-height: 2rem;
+      padding: 0.25rem;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255);
+    }
 
     .hover {
       position: absolute;

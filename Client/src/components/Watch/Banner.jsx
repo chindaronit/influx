@@ -6,9 +6,32 @@ import Img from "../LadyLoadImage/Img";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import Video from "../Video/Video";
 
-const Banner = ({ video, item, src , handleAlert,setText}) => {
+const Banner = ({ video, item, src, handleAlert, setText,endpoint }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+
+  const handleClick = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/watchlist/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "ronitchinda100@gmail.com",
+          id: item.id,
+          media_type: endpoint,
+        }),
+      });
+
+      if (res.status === 200) {
+        setText("Added to Watchlist");
+        handleAlert();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="watch">
@@ -40,10 +63,7 @@ const Banner = ({ video, item, src , handleAlert,setText}) => {
             WATCH
           </Button>
           <div className="side-btn">
-            <IconButton onClick={() => {
-              setText("Added to Watchlist");
-              handleAlert();
-            }}>
+            <IconButton onClick={handleClick}>
               <AddIcon className="btn" />
             </IconButton>
             <div className="hover">Add to Watchlist</div>

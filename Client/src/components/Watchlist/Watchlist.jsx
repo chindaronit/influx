@@ -1,35 +1,33 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Slide from "../Movies/Slide";
+import React, { useEffect } from "react";
+import Slide from "./Slide";
+import { useSelector, useDispatch } from "react-redux";
+import { CircularProgress } from "@mui/material";
 
+const Watchlist = ({ email, handleAlert, setText }) => {
+  const { movies, loading } = useSelector((state) => state.watchlist);
 
-const Watchlist = ({ section, email }) => {
-  const [data, setData] = useState([]);
-  const getAPIData = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/watchlist/api", {
-        params: { email: email },
-      });
-      setData(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getAPIData();
-  }, []);
-
+  if (loading) {
+    return (
+      <div className="preloader">
+        <CircularProgress className="icon" />
+      </div>
+    );
+  }
+  
   return (
-    <div className="container">
-      <div className="content-heading">
-        <h1>Watchlist</h1>
-      </div>
-      <div className="wrapper">
-        {data.map((item, index) => {
-          return <div className="item" key={index}></div>;
-        })}
-      </div>
+    <div className="wrapper">
+      {movies?.map((item, index) => {
+        return (
+          <div className="item" key={index}>
+            <Slide
+              data={item}
+              endpoint={item.media_type}
+              handleAlert={handleAlert}
+              setText={setText}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

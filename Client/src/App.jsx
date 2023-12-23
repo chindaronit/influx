@@ -18,7 +18,6 @@ import ViewAll from "./components/Search/ViewAll";
 import Explore from "./components/Explore/Explore";
 import Subscription from "./components/Subscription/Subscription";
 import Added from "./components/Watchlist/Added";
-import Watchlist from "./components/Watchlist/Watchlist";
 import Genre from "./components/Filters/Genre";
 import Trending from "./components/Filters/Trending";
 import Upcoming from "./components/Filters/Upcoming";
@@ -29,7 +28,7 @@ import Popular from "./components/Filters/Popular";
 import PopularTv from "./components/Filters/PopularTv";
 import NowPlaying from "./components/Filters/NowPlaying";
 import AiringTodayTv from "./components/Filters/AiringTodayTv";
-
+import LoadWatchlist from "./components/Watchlist/LoadWatchlist";
 
 function App() {
   const [showWatchListAlert, setShowWatchListAlert] = useState(false);
@@ -115,14 +114,14 @@ function App() {
           <Route
             path="/subscription"
             element={
-              <Subscription handleAlert={handleAlert} setText={setText} />
+              <Subscription handleAlert={handleAlert} setText={setText} email="ronitchinda100@gmail.com"/>
             }
           />
           <Route
             path="/watchlist"
             element={
-              <Watchlist
-                section={"Subscription Plans"}
+              <LoadWatchlist
+                email="ronitchinda100@gmail.com"
                 handleAlert={handleAlert}
                 setText={setText}
               />
@@ -163,7 +162,9 @@ function App() {
 
           <Route
             path="/section/tv/airing_today"
-            element={<AiringTodayTv handleAlert={handleAlert} setText={setText} />}
+            element={
+              <AiringTodayTv handleAlert={handleAlert} setText={setText} />
+            }
           />
 
           <Route

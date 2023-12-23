@@ -13,10 +13,12 @@ const watchlistSchema = new Schema({
     required: true,
     trim: true,
   },
+  media_type: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
-
-// Create a compound index on email and itemId to enforce uniqueness
-watchlistSchema.index({ email: 1, itemId: 1 }, { unique: true });
 
 const watchlistModel = mongoose.model("watchlist", watchlistSchema);
 
