@@ -1,11 +1,18 @@
 # Influx
 
-Personal Project
-• Influx is an OTT Platform provides seemless streaming experience with simple and interactive interface.
-• Influx provides personal recommendations to the content a user is watching. (Content Based Recommender
-System)
-• Tech Stack Include : Node.js, React.js, MUI, MongoDB Atlas, Docker (Microservices), Aws, Python, Pandas,
-Numpy, Scikit-learn
+## Personal Project
+
+- Influx is an OTT Platform providing a seamless streaming experience with a simple and interactive interface.
+- Offers personal recommendations using a Content-Based Recommender System for the content a user is watching.
+
+## Tech Stack
+
+- Node.js
+- React.js
+- MUI (Material-UI)
+- MongoDB Atlas
+- Docker (Microservices)
+- AWS
 
 ## Preview
 
