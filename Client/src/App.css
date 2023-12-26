@@ -96,7 +96,6 @@ body {
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 2rem;
-  flex: 1;
   .item {
     margin: 1rem !important;
   }
