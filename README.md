@@ -35,6 +35,6 @@ Numpy, Scikit-learn
 
 
 ### Any Genre
-![Genre](./Overview/genre.png)(./Overview/genre.png)
+![Genre](./Overview/genre.png)
 
 
