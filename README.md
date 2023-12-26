@@ -10,8 +10,10 @@ Numpy, Scikit-learn
 ## Preview
 
 ### Main 
-![Main](./Overview/home.png)(./Overview/home_all.png)
+![Main](./Overview/home.png)
 
+### HomePage 
+![Home](./Overview/home_all.png)
 
 ### Signin 
 ![Signin](./Overview/login.png)
@@ -26,7 +28,11 @@ Numpy, Scikit-learn
 ![Watchlist](./Overview/watchlist.png)
 
 ### Watch Movie
-![Watch](./Overview/Watch.png)(./Overview/related.png)
+![Watch](./Overview/watch.png)
+
+### Related Movie Content
+![Realted](./Overview/related.png)
+
 
 ### Any Genre
 ![Genre](./Overview/genre.png)(./Overview/genre.png)
