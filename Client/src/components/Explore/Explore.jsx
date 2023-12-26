@@ -9,10 +9,14 @@ import Slide from "../Movies/Slide";
 import FetchQueryData from "../../functions/FetchQueryData";
 import FetchQueryNextPageData from "../../functions/FetchQueryNextPageData";
 import { CircularProgress } from "@mui/material";
+import SideBar from "../Sidebar/Sidebar";
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
+import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 
 let filters = {};
 
-const Explore = ({handleAlert,setText}) => {
+const Explore = ({ handleAlert, setText }) => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -59,69 +63,83 @@ const Explore = ({handleAlert,setText}) => {
   if (!data || loading) {
     return (
       <div className="preloader">
-        <CircularProgress className="icon"/>
+        <CircularProgress className="icon" />
       </div>
     );
   }
 
   return (
-    <div className="explorePage container">
-      <h2 className="heading ml-4 mt-4">
-        {mediaType === "tv" ? "Explore TV Shows" : "Explore Movies"}
-      </h2>
-      <div className="filters">
-        <Select
-          isMulti
-          name="genres"
-          value={genre}
-          closeMenuOnSelect={false}
-          options={genresData?.genres}
-          getOptionLabel={(option) => option.name}
-          getOptionValue={(option) => option.id}
-          onChange={onChange}
-          placeholder="Select genres"
-          className="react-select-container genresDD filter"
-          classNamePrefix="react-select"
-        />
-        <Select
-          name="sortby"
-          value={sortby}
-          options={SortByData}
-          onChange={onChange}
-          isClearable={true}
-          placeholder="Sort by"
-          className="react-select-container sortbyDD filter"
-          classNamePrefix="react-select"
-        />
-      </div>
+    <>
+      <ContentWrapper>
+        <Navbar />
+        <div className="explorePage container">
+          <h2 className="heading ml-4 mt-4">
+            {mediaType === "tv" ? "Explore TV Shows" : "Explore Movies"}
+          </h2>
+          <div className="filters">
+            <Select
+              isMulti
+              name="genres"
+              value={genre}
+              closeMenuOnSelect={false}
+              options={genresData?.genres}
+              getOptionLabel={(option) => option.name}
+              getOptionValue={(option) => option.id}
+              onChange={onChange}
+              placeholder="Select genres"
+              className="react-select-container genresDD filter"
+              classNamePrefix="react-select"
+            />
+            <Select
+              name="sortby"
+              value={sortby}
+              options={SortByData}
+              onChange={onChange}
+              isClearable={true}
+              placeholder="Sort by"
+              className="react-select-container sortbyDD filter"
+              classNamePrefix="react-select"
+            />
+          </div>
 
-      {!loading && (
-        <>
-          {data?.results?.length > 0 ? (
-            <InfiniteScroll
-              className="content"
-              dataLength={data?.results?.length || []}
-              next={FetchQueryNextPageData(data, setData, setPageNum, url)}
-              hasMore={pageNum <= data?.total_pages}
-              loader={<CircularProgress />}
-            >
-              <div className="wrapper">
-                {data?.results?.map((item, index) => {
-                  if (item.media_type === "person") return;
-                  return (
-                    <div className="item" key={index}>
-                      <Slide data={item} endpoint={mediaType} handleAlert={handleAlert} setText={setText} />
-                    </div>
-                  );
-                })}
-              </div>
-            </InfiniteScroll>
-          ) : (
-            <span className="resultNotFound">Sorry, Results not found!</span>
+          {!loading && (
+            <>
+              {data?.results?.length > 0 ? (
+                <InfiniteScroll
+                  className="content"
+                  dataLength={data?.results?.length || []}
+                  next={FetchQueryNextPageData(data, setData, setPageNum, url)}
+                  hasMore={pageNum <= data?.total_pages}
+                  loader={<CircularProgress />}
+                >
+                  <div className="wrapper">
+                    {data?.results?.map((item, index) => {
+                      if (item.media_type === "person") return;
+                      return (
+                        <div className="item" key={index}>
+                          <Slide
+                            data={item}
+                            endpoint={mediaType}
+                            handleAlert={handleAlert}
+                            setText={setText}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </InfiniteScroll>
+              ) : (
+                <span className="resultNotFound">
+                  Sorry, Results not found!
+                </span>
+              )}
+            </>
           )}
-        </>
-      )}
-    </div>
+        </div>
+        <Footer />
+      </ContentWrapper>
+      <SideBar handleAlert={handleAlert} setText={setText}/>
+    </>
   );
 };
 

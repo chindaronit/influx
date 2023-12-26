@@ -4,8 +4,11 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MovieIcon from "@mui/icons-material/Movie";
 import TvIcon from "@mui/icons-material/Tv";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { user } = useSelector((state)=>state.authSlice);
+
   return (
     <div className="nav container">
       <div className="menu">
@@ -23,7 +26,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="nav-user">
-        <h3>Ronit Chinda</h3>
+        <h3>{user?.name}</h3>
         <AccountCircleIcon className="icon" />
       </div>
     </div>

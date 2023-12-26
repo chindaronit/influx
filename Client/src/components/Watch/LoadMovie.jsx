@@ -4,8 +4,12 @@ import useFetch from "../../hooks/useFetch";
 import Watch from "./Watch";
 import "./style.css";
 import { CircularProgress } from "@mui/material";
+import Footer from "../Footer/Footer";
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
+import Navbar from "../Navbar/Navbar";
+import SideBar from "../Sidebar/Sidebar";
 
-const LoadMovie = ({handleAlert,setText}) => {
+const LoadMovie = ({ handleAlert, setText }) => {
   const { media, id } = useParams();
   const { data, loading } = useFetch(`/${media}/${id}`);
   const { data: credits, loading: creditLoading } = useFetch(
@@ -41,17 +45,24 @@ const LoadMovie = ({handleAlert,setText}) => {
     !videoLoading &&
     !similarLoading &&
     !recommendedLoading && (
-      <Watch
-        item={data}
-        crew={credits?.crew}
-        cast={credits?.cast}
-        video={video?.results}
-        similar={similar?.results}
-        recommended={recommended?.results}
-        endpoint={media}
-        handleAlert={handleAlert}
-        setText={setText}
-      />
+      <>
+        <ContentWrapper>
+          <Navbar />
+          <Watch
+            item={data}
+            crew={credits?.crew}
+            cast={credits?.cast}
+            video={video?.results}
+            similar={similar?.results}
+            recommended={recommended?.results}
+            endpoint={media}
+            handleAlert={handleAlert}
+            setText={setText}
+          />
+          <Footer />
+        </ContentWrapper>
+        <SideBar handleAlert={handleAlert} setText={setText}/>
+      </>
     )
   );
 };

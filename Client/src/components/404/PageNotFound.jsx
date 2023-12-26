@@ -1,9 +1,12 @@
-import React from 'react'
-import './style.css'
+import React from 'react';
+import './style.css';
+
 
 const PageNotFound = () => {
   return (
-    <div>PageNotFound</div>
+    <div className='d-flex jc-center'>
+      <img src="/src/assets/noResult.jpg" style={{width:"50rem"}} alt="" />
+    </div>
   )
 }
 

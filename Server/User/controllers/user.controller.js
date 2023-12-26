@@ -16,38 +16,21 @@ const getAllUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const email = req.query.email;
+    const email = req.body.email;
+    if (!email) return res.status(400).json({success:false, msg: "email is required" });
     const user = await userModel.findOne({ email }).exec();
 
     if (!user) {
       return res.status(404).json({ success: false, msg: "User not found" });
     }
 
-    res.status(200).json(user);
+    res.status(200).json({ success: "true", user: user });
   } catch (err) {
     res.status(500).json({
       success: false,
       msg: "Error retrieving user",
       error: err.message,
     });
-  }
-};
-
-const addUser = async (req, res) => {
-  try {
-    const { name, dob, email, password } = req.body;
-    const user = await userModel.findOne({ email }).exec();
-
-    if (!user) {
-      const newUser = new userModel({ name, dob, email, password });
-
-      await newUser.save();
-      return res.status(200).json({ msg: "User Added", user: newUser });
-    }
-
-    res.status(409).json({ success: false, msg: "User already exist" });
-  } catch (err) {
-    res.status(400).json("Error: " + err.message);
   }
 };
 
@@ -120,7 +103,6 @@ const authenticateToken = (req, res, next) => {
 module.exports = {
   getAllUsers,
   getUser,
-  addUser,
   updateUser,
   deleteUser,
   signIn,

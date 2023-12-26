@@ -6,6 +6,10 @@ import SectionData from "../../assets/SectionData";
 import Section from "../Section/Section";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
+import ContentWrapper from "../ContentWrapper/ContentWrapper";
+import Footer from "../Footer/Footer";
+import SideBar from "../Sidebar/Sidebar";
+import Navbar from "../Navbar/Navbar";
 
 const Home = ({ handleAlert, setText }) => {
   const { data, loading } = useFetch("/trending/tv/day");
@@ -20,26 +24,34 @@ const Home = ({ handleAlert, setText }) => {
   }
 
   return (
-    <div className="container">
-      <Banner
-        data={data?.results}
-        endpoint={"tv"}
-        url={url}
-        genres={genres}
-        handleAlert={handleAlert}
-        setText={setText}
-      />
-      {SectionData.map((item) => {
-        return (
-          <Section
-            item={item}
-            key={item.id}
+    <>
+      <ContentWrapper>
+        <Navbar />
+        <div className="container">
+          <Banner
+            data={data?.results}
+            endpoint={"tv"}
+            url={url}
+            genres={genres}
             handleAlert={handleAlert}
             setText={setText}
           />
-        );
-      })}
-    </div>
+          {SectionData.map((item) => {
+            return (
+              <Section
+                item={item}
+                key={item.id}
+                handleAlert={handleAlert}
+                setText={setText}
+              />
+            );
+          })}
+        </div>
+
+        <Footer />
+      </ContentWrapper>
+      <SideBar handleAlert={handleAlert} setText={setText}/>
+    </>
   );
 };
 

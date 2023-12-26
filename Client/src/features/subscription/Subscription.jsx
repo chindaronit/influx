@@ -10,33 +10,36 @@ const initialState = {
 
 export const getPlan = createAsyncThunk(
   "/subscription/getPlan",
-  async (email, thunkAPI) => {
+  async ({ email, token }, thunkAPI) => {
     try {
       const res = await axios.get(url, {
-        params: { email: email },
+        params: { email },
+        headers: {
+          "authorization": `Bearer ${token}`,
+        },
       });
       return res.data[0];
     } catch (error) {
       console.log(error);
       return thunkAPI.rejectWithValue("something went wrong...");
     }
-  }
+  } 
 );
 
 export const upgradePlan = createAsyncThunk(
   "/subscription/upgradePlan",
-  async ({ email, plan, dateUpgraded }, thunkAPI) => {
+  async ({ email, plan, dateUpgraded, token }, thunkAPI) => {
     try {
-      console.log(email,plan,dateUpgraded);
       const res = await fetch("http://localhost:5000/subscription/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
           email,
           plan,
-          dateUpgraded
+          dateUpgraded,
         }),
       });
       return { email: email, plan: plan, dateUpgraded: dateUpgraded };

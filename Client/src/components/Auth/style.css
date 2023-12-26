@@ -1,0 +1,58 @@
+.auth-card {
+  background-color: black;
+  border-radius: 0.5rem;
+  padding: 2.5rem 4rem;
+  box-sizing: border-box;
+  min-width: 30rem;
+  color: rgba(255, 255, 255, 0.842);
+
+  .hr {
+    margin-bottom: 3rem;
+  }
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .logo img {
+    width: 75px;
+  }
+  .logo h2 {
+    flex: 1;
+    margin-left: 0.5rem;
+  }
+  .input-label {
+    display: block;
+    width: 100%;
+    margin: 1rem 0rem;
+    font-size: large;
+    font-weight: bold;
+  }
+  .input-value {
+    width: 100%;
+    background-color: #121212;
+    padding: 1rem;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 2rem;
+    color: white;
+  }
+  .input-value::placeholder {
+    text-indent: 10px;
+  }
+  .highlight {
+    text-align: end;
+  }
+  .highlight a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.74);
+  }
+  .highlight a:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .btn {
+    font-size: large;
+  }
+}

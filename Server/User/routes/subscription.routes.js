@@ -2,13 +2,13 @@ const express = require("express");
 const {
   getSubscription,
   addSubscription,
-  authenticateToken,
 } = require("../controllers/subscription.controller");
 const router = express.Router();
+const authenticateToken = require("../middleware/authenticateToken");
 
 router
   .route("/api")
-  .get(getSubscription)
-  .post(addSubscription);
+  .get(authenticateToken, getSubscription)
+  .post(authenticateToken, addSubscription);
 
 module.exports = router;

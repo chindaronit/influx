@@ -8,11 +8,14 @@ import Img from "../LadyLoadImage/Img";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeMovie } from "../../features/watchlist/watchlistSlice";
+import { useNavigate } from "react-router-dom";
 
 const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
   const url = useSelector((state) => state.homePage.url);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, token } = useSelector((state) => state.authSlice);
 
   useEffect(() => {
     if (data.backdrop_path) {
@@ -28,9 +31,10 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${token}`
         },
         body: JSON.stringify({
-          email: "ronitchinda100@gmail.com",
+          email: user.email,
           id: data.id,
           media_type: endpoint,
         }),
@@ -40,6 +44,9 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
         dispatch(removeMovie({id:data.id}));
         setText("Removed From Wathclist");
         handleAlert();
+      }
+      else if(res.status===401) {
+        navigate("/signin");
       }
     } catch (error) {
       console.log(error);

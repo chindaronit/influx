@@ -5,31 +5,43 @@ import dayjs from "dayjs";
 import Img from "../LadyLoadImage/Img";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import Video from "../Video/Video";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const Banner = ({ video, item, src, handleAlert, setText,endpoint }) => {
+const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+  const navigate = useNavigate();
+  const { user, token } = useSelector((state) => state.authSlice);
 
   const handleClick = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/watchlist/api", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "ronitchinda100@gmail.com",
-          id: item.id,
-          media_type: endpoint,
-        }),
-      });
+    if (!user || !token || !user?.email) {
+      setText("Login first!");
+      handleAlert();
+    } else {
+      try {
+        const res = await fetch("http://localhost:5000/watchlist/api", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: user.email,
+            id: item.id,
+            media_type: endpoint,
+          }),
+        });
 
-      if (res.status === 200) {
-        setText("Added to Watchlist");
-        handleAlert();
+        if (res.status === 200) {
+          setText("Added to Watchlist");
+          handleAlert();
+        } else if (res.status === 401) {
+          navigate("/signin");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 

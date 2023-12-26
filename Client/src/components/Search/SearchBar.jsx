@@ -53,7 +53,7 @@ const SearchBar = () => {
         <input
           type="text"
           className="text"
-          placeholder={"Search for any movie"}
+          placeholder={"Search for any movie or tv show"}
           value={query}
           onChange={handleChange}
           onKeyUp={searchQueryHandler}

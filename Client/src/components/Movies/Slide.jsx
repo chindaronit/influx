@@ -5,11 +5,13 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import Rating from "./Rating";
 import Img from "../LadyLoadImage/Img";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
   const url = useSelector((state) => state.homePage.url);
+  const { user, token } = useSelector((state) => state.authSlice);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data.backdrop_path) {
@@ -20,25 +22,33 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
   }, [url.backdrop, data]);
 
   const handleClick = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/watchlist/api", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "ronitchinda100@gmail.com",
-          id: data.id,
-          media_type: endpoint,
-        }),
-      });
+    if (!user || !token || !user?.email) {
+      setText("Login first!");
+      handleAlert();
+    } else {
+      try {
+        const res = await fetch("http://localhost:5000/watchlist/api", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: user.email,
+            id: data.id,
+            media_type: endpoint,
+          }),
+        });
 
-      if (res.status === 200) {
-        setText("Added to Watchlist");
-        handleAlert();
+        if (res.status === 200) {
+          setText("Added to Watchlist");
+          handleAlert();
+        } else if (res.status === 401) {
+          navigate("/signin");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 

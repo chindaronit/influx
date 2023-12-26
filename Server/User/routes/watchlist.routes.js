@@ -5,7 +5,12 @@ const {
   removeItem,
 } = require("../controllers/watchlist.controller");
 const router = express.Router();
+const authenticateToken = require("../middleware/authenticateToken");
 
-router.route("/api").get(getList).post(addItem).delete(removeItem);
+router
+  .route("/api")
+  .get(authenticateToken, getList)
+  .post(authenticateToken, addItem)
+  .delete(authenticateToken, removeItem);
 
 module.exports = router;

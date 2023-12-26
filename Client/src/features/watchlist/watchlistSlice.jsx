@@ -10,10 +10,13 @@ const initialState = {
 
 export const getMovies = createAsyncThunk(
   "/watchlist",
-  async (email, thunkAPI) => {
+  async({email,token}, thunkAPI) => {
     try {
       const res = await axios.get(url, {
         params: { email: email },
+        headers: {
+          "authorization": `Bearer ${token}`,
+        },
       });
       const dataWatchlist = res.data;
       const movieList = [];

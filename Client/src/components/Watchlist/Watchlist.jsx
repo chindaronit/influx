@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
 import Slide from "./Slide";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
 
-const Watchlist = ({ email, handleAlert, setText }) => {
+const Watchlist = ({ handleAlert, setText }) => {
   const { movies, loading } = useSelector((state) => state.watchlist);
 
   if (loading) {
@@ -13,7 +12,7 @@ const Watchlist = ({ email, handleAlert, setText }) => {
       </div>
     );
   }
-  
+
   return (
     <div className="wrapper">
       {movies?.map((item, index) => {

@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { upgradePlan } from "../../features/subscription/Subscription";
 import dayjs from "dayjs";
-import CircularProgress from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
-const SubscriptionCard = ({ email, item, handleAlert, setText }) => {
+const SubscriptionCard = ({ item, handleAlert, setText, token, email }) => {
   const { plan, loading } = useSelector((state) => state.subscription);
   const dispatch = useDispatch();
 
@@ -58,7 +58,7 @@ const SubscriptionCard = ({ email, item, handleAlert, setText }) => {
           ))}
         </ul>
 
-        {plan.plan === item.plan ? (
+        {plan?.plan === item.plan ? (
           <h3 className="mb-2">
             Upgraded On : {dayjs(plan.dateUpgraded).format("MMM D,YYYY")}
           </h3>
@@ -68,7 +68,7 @@ const SubscriptionCard = ({ email, item, handleAlert, setText }) => {
 
         <div className="d-flex jc-between">
           <h3 style={{ color: item.color }}>{item.price} Monthly</h3>
-          {plan.plan === item.plan ? (
+          {plan?.plan === item.plan ? (
             <h3>
               <Button
                 variant="contained"
@@ -80,7 +80,7 @@ const SubscriptionCard = ({ email, item, handleAlert, setText }) => {
             </h3>
           ) : (
             <Button
-              variant="contained"
+              variant={plan ? "contained" : "disabled"}
               className="btn"
               style={{ backgroundColor: item.color }}
               onClick={() => {
@@ -89,6 +89,7 @@ const SubscriptionCard = ({ email, item, handleAlert, setText }) => {
                     email: email,
                     plan: item.plan,
                     dateUpgraded: new Date(),
+                    token: token,
                   })
                 );
                 setText("Plan Upgraded!");
