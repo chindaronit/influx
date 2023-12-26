@@ -10,21 +10,25 @@ Numpy, Scikit-learn
 ## Preview
 
 ### Main 
-![Main](./Overview/home.png)
-![Main_All](./Overview/all.png)
+![Main](./Overview/home.png)(./Overview/home_all.png)
 
 
-### Services 
-![Services](./Preview/4.png)
+### Signin 
+![Signin](./Overview/login.png)
 
-### Signup
-![Signup](./Preview/signup.png)
+### Search
+![Search](./Overview/search.png)
 
-### Properties
-![properties](./Preview/allProperty.png)
+### Subscription
+![Subscription](./Overview/subscription.png)
 
-### addProperty
-![properties](./Preview/addProperty.png)
+### Watchlist
+![Watchlist](./Overview/watchlist.png)
 
-### MyPost
-![post](./Preview/myPost.png)
+### Watch Movie
+![Watch](./Overview/Watch.png)(./Overview/related.png)
+
+### Any Genre
+![Genre](./Overview/genre.png)(./Overview/genre.png)
+
+
