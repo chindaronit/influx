@@ -1,4 +1,3 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -26,6 +25,7 @@ import { getTokenFromCookie } from "./features/auth/authSlice";
 import FetchApiConfig from "./functions/FetchApiConfig";
 import FetchApiGenres from "./functions/FetchApiGenres";
 import PageNotFound from "./components/404/PageNotFound";
+import "https://d3w3swjt2wvcft.cloudfront.net/Client/src/App.css";
 
 
 function App() {

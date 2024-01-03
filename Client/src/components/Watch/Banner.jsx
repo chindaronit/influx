@@ -7,6 +7,7 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import Video from "../Video/Video";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {PORT} from "../../utils/config";
 
 const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
   const [show, setShow] = useState(false);
@@ -20,7 +21,7 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
       handleAlert();
     } else {
       try {
-        const res = await fetch("http://localhost:5000/watchlist/api", {
+        const res = await fetch(`${PORT}/watchlist/api`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

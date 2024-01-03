@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavItemData } from "../../assets/NavItemData";
 import Item from "./Item";
 import { OptionsData } from "../../assets/OptionsData";
 import { Link } from "react-router-dom";
-import "./style.css";
 import { UserRelatedData } from "../../assets/UserRelatedData";
 import { IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./style.css";
 import SubscriptionDetail from "../../assets/SubscriptionDetail";
 import SubscriptionCard from "./SubscriptionCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,19 +13,31 @@ import { CircularProgress } from "@mui/material";
 const Subscription = ({ handleAlert, setText }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, token, loading } = useSelector((state) => state.authSlice);
+  const { user, token, loading, success } = useSelector(
+    (state) => state.authSlice
+  );
 
   useEffect(() => {
+    let timeoutId;
+
+    const handleTimeout = () => {
+      navigate("/signin");
+    };
+
     if (!loading) {
-      if (!token || !user || !user?.email) {
-        navigate("/signin");
-      } else {
+      if (success) {
         dispatch(getPlan({ email: user?.email, token: token }));
+      } else {
+        timeoutId = setTimeout(handleTimeout, 5000);
       }
     }
-  }, [user, token, loading]);
 
-  if (loading) {
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [user, token, loading, success]);
+
+  if (loading || !success) {
     return (
       <div className="preloader">
         <CircularProgress className="icon" />

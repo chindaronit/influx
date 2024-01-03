@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeMovie } from "../../features/watchlist/watchlistSlice";
 import { useNavigate } from "react-router-dom";
+import {PORT }from "../../utils/config";
 
 const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
@@ -27,7 +28,7 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
 
   const handleClick = async () => {
     try {
-      const res = await fetch("http://localhost:5000/watchlist/api", {
+      const res = await fetch(`${PORT}/watchlist/api`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

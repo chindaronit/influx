@@ -1,4 +1,3 @@
-
 const Added = ({ text }) => {
   return (
     <div className="watchlist-alert">

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
 import { useParams } from "react-router-dom";
 import Slide from "../Movies/Slide";
 import InfiniteScroll from "react-infinite-scroll-component";

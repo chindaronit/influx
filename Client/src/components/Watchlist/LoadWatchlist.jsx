@@ -11,21 +11,33 @@ import { CircularProgress } from "@mui/material";
 
 const LoadWatchlist = ({ handleAlert, setText }) => {
   const dispatch = useDispatch();
-  const { user, token, loading } = useSelector((state) => state.authSlice);
+  const { user, token, loading, success } = useSelector(
+    (state) => state.authSlice
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
+    let timeoutId;
+
+    const handleTimeout = () => {
+      navigate("/signin");
+    };
+
     if (!loading) {
-      if (!token || !user || !user?.email) {
-        navigate("/signin");
+      if (success) {
+        dispatch(getMovies({ email: user?.email, token: token })); 
       } else {
-        dispatch(getMovies({ email: user?.email, token: token }));
+        timeoutId = setTimeout(handleTimeout, 5000);
       }
     }
-  }, [user, token, loading]);
 
-  if (loading) {
-    console.log(user, token);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+
+  }, [user, token, loading, success]);
+
+  if (loading || !success) {
     return (
       <div className="preloader">
         <CircularProgress className="icon" />

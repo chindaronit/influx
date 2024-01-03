@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import Banner from "../Banner/Banner";
 import useFetch from "../../hooks/useFetch";
 import SectionData from "../../assets/SectionData";

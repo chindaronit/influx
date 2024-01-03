@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { PORT } from "../../utils/config";
 
 const initialState = {
   user: null,
@@ -13,8 +14,9 @@ export const handleSignin = createAsyncThunk(
   "/signin",
   async ({ email, password }, thunkAPI) => {
     try {
+      console.log(PORT);
       const res = await axios.post(
-        "http://localhost:5000/user/signin",
+        `${PORT}/user/signin/`,
         {
           email,
           password,
@@ -45,7 +47,6 @@ export const handleSignin = createAsyncThunk(
     }
   }
 );
-
 
 export const getTokenFromCookie = createAsyncThunk(
   "/getCookie",
@@ -111,8 +112,13 @@ const authSlice = createSlice({
         if (action.payload?.token) {
           state.token = action.payload.token;
         }
-        state.success = true;
-        state.loading = false;
+        if (!action.payload || !action.payload.user) {
+          state.loading = false;
+          state.success = false;
+        } else if (state.user !== null && state.token !== null) {
+          state.success = true;
+          state.loading = false;
+        }
       })
       .addCase(getTokenFromCookie.rejected, (state, action) => {
         console.log(action); // use of thunkapi is here check payload of the object

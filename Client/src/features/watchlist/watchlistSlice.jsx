@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchDataFromApi } from "../../utils/api";
 import axios from "axios";
+import {PORT} from "../../utils/config";
 
-const url = "http://localhost:5000/watchlist/api";
+const url = `${PORT}/watchlist/api`;
 const initialState = {
   movies: [],
   loading: true,
@@ -18,6 +19,7 @@ export const getMovies = createAsyncThunk(
           "authorization": `Bearer ${token}`,
         },
       });
+
       const dataWatchlist = res.data;
       const movieList = [];
 
@@ -53,7 +55,6 @@ const watchlistSlice = createSlice({
   reducers: {
     removeMovie: (state, action) => {
       state.loading = true; // Set loading to true initially
-
       const { id } = action.payload;
       const updatedItems = state.movies.filter((item) => item.id !== id);
       state.movies = updatedItems;

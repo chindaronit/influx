@@ -26,7 +26,7 @@ const addItem = async (req, res) => {
 
     res.status(200).json({ success: true, msg: "Item already exist" });
   } catch (err) {
-    res.status(400).json("Error: " + err.message);
+    res.status(500).json("Error: " + err.message);
   }
 };
 
@@ -37,7 +37,7 @@ const removeItem = async (req, res) => {
     await watchlistModel.findOneAndDelete({ email, id , media_type }).exec();
     res.status(200).json({ success: true, msg: "Item Removed!" });
   } catch (err) {
-    res.status(400).json("Error: " + err.message);
+    res.status(500).json("Error: " + err.message);
   }
 };
 

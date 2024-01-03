@@ -16,7 +16,7 @@ const Genre = ({ handleAlert, setText }) => {
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);
-  let url = `/discover/movie?with_genres=${parseInt(genre)}?page=${pageNum}`;
+  let url = `/discover/movie?with_genres=${parseInt(genre)}&page=${pageNum}`;
 
   useEffect(() => {
     setPageNum(1);
@@ -45,6 +45,7 @@ const Genre = ({ handleAlert, setText }) => {
                   next={() => {
                     if (pageNum) {
                       FetchQueryNextPageData(data, setData, setPageNum, url);
+                      url = `/discover/movie?with_genres=${parseInt(genre)}?page=${pageNum}`;
                     }
                   }}
                   hasMore={pageNum <= data?.total_pages}
@@ -73,7 +74,7 @@ const Genre = ({ handleAlert, setText }) => {
           </div>
           <Footer />
         </ContentWrapper>
-        <SideBar handleAlert={handleAlert} setText={setText}/>
+        <SideBar setText={setText} handleAlert={handleAlert} />
       </>
     )
   );

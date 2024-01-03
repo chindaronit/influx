@@ -4,15 +4,12 @@ import FetchQueryNextPageData from "../../functions/FetchQueryNextPageData";
 import { CircularProgress } from "@mui/material";
 import Slide from "../Movies/Slide";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useSearchParams } from "react-router-dom";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 import SideBar from "../Sidebar/Sidebar";
 
 const Trending = ({ handleAlert, setText }) => {
-  const [searchParams] = useSearchParams();
-  const genre = searchParams.get("genre");
   const [data, setData] = useState(null);
   const [pageNum, setPageNum] = useState(1);
   const [loading, setLoading] = useState(false);

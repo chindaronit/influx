@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const port = process.env.PORT || 5000;
 const cors = require("cors");
-require("dotenv").config();
 const cookieParser = require("cookie-parser");
 
 const conn = require("./models/conn");
@@ -21,6 +21,6 @@ app.use("/subscription", subscriptionRouter);
 app.use("/watchlist", watchlistRouter);
 
 app.listen(port, () => {
-  console.log("Server is listening on port 5000...");
+  console.log("Server is listening on port 80...");
 });
 

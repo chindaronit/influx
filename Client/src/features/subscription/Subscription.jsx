@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const url = "http://localhost:5000/subscription/api";
+import {PORT} from "../../utils/config";
 
 const initialState = {
   plan: null,
@@ -12,7 +11,7 @@ export const getPlan = createAsyncThunk(
   "/subscription/getPlan",
   async ({ email, token }, thunkAPI) => {
     try {
-      const res = await axios.get(url, {
+      const res = await axios.get(`${PORT}/subscription/api`, {
         params: { email },
         headers: {
           "authorization": `Bearer ${token}`,
@@ -30,7 +29,7 @@ export const upgradePlan = createAsyncThunk(
   "/subscription/upgradePlan",
   async ({ email, plan, dateUpgraded, token }, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:5000/subscription/api", {
+      const res = await fetch(`${PORT}/subscription/api`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

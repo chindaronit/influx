@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import Rating from "./Rating";
 import Img from "../LadyLoadImage/Img";
 import { Link, useNavigate } from "react-router-dom";
+import {PORT} from "../../utils/config";
 
 const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
@@ -27,7 +28,7 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
       handleAlert();
     } else {
       try {
-        const res = await fetch("http://localhost:5000/watchlist/api", {
+        const res = await fetch(`${PORT}/watchlist/api`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

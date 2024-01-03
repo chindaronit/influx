@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MovieIcon from "@mui/icons-material/Movie";
 import TvIcon from "@mui/icons-material/Tv";

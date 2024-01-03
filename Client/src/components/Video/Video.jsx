@@ -1,7 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player/youtube";
 import CloseIcon from "@mui/icons-material/Close";
-import "./style.css";
 
 const Video = ({ show, setShow, videoId, setVideoId }) => {
   const hidePopup = () => {

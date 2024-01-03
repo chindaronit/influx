@@ -16,7 +16,7 @@ const getAllUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const email = req.body.email;
+    const email = req.query.email;
     if (!email) return res.status(400).json({success:false, msg: "email is required" });
     const user = await userModel.findOne({ email }).exec();
 

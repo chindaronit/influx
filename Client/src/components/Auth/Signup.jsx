@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
+import {PORT} from "../../utils/config";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/user/signup",
+        `${PORT}/user/signup`,
         {
           name,
           dob,
@@ -35,7 +35,7 @@ const Signup = () => {
       );
 
       if (response.status === 200) {
-        navigate("/", { state: { email: email } });
+        navigate("/signin", { state: { email: email } });
       }
     } catch (error) {
       window.alert("User with this email already exists");

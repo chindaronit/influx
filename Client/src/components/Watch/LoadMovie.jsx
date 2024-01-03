@@ -2,7 +2,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import Watch from "./Watch";
-import "./style.css";
 import { CircularProgress } from "@mui/material";
 import Footer from "../Footer/Footer";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";

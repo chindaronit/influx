@@ -1,5 +1,4 @@
 import SearchBar from "./SearchBar";
-import "./style.css";
 import SearchBarData from "../../assets/SearchBarData";
 import { Card } from "@mui/material";
 import { Link } from "react-router-dom";

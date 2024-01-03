@@ -5,7 +5,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Slide from "./Slide";
-import "./style.css";
 
 const Banner = ({
   data,
