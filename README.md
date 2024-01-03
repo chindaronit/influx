@@ -9,10 +9,13 @@
 
 - Node.js
 - React.js
+- Redux Tookit
 - MUI (Material-UI)
 - MongoDB Atlas
 - Docker (Microservices)
-- AWS
+- AWS ec2
+- Aws Cloudfront
+- Aws Api Gateway
 
 ## Preview
 
