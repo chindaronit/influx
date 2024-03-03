@@ -7,7 +7,9 @@ import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import Video from "../Video/Video";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {PORT} from "../../utils/config";
+import { PORT } from "../../utils/config";
+import StarIcon from "@mui/icons-material/Star";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
   const [show, setShow] = useState(false);
@@ -95,6 +97,32 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
               <div className="hover">Watch Trailer</div>
             </div>
           )}
+
+          <div className="side-btn">
+            <IconButton
+              onClick={() => {
+                setShow(true);
+                setVideoId(video.key);
+              }}
+            >
+              <StarIcon className="play-btn" />
+            </IconButton>
+
+            <div className="hover">Add to Favourite</div>
+          </div>
+
+          <div className="side-btn">
+            <IconButton
+              onClick={() => {
+                setShow(true);
+                setVideoId(video.key);
+              }}
+            >
+              <ThumbUpIcon className="play-btn" />
+            </IconButton>
+
+            <div className="hover">Like</div>
+          </div>
         </div>
       </div>
       <Video

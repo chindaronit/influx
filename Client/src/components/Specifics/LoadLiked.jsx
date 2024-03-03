@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Watchlist from "./Watchlist";
+import Liked from "./Liked";
 import { useDispatch, useSelector } from "react-redux";
-import { getMovies } from "../../features/watchlist/watchlistSlice";
+import { getLikedMovies } from "../../features/Specifics/likedSlice";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -9,7 +9,7 @@ import SideBar from "../Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 
-const LoadWatchlist = ({ handleAlert, setText }) => {
+const LoadLiked = ({ handleAlert, setText }) => {
   const dispatch = useDispatch();
   const { user, token, loading, success } = useSelector(
     (state) => state.authSlice
@@ -25,7 +25,7 @@ const LoadWatchlist = ({ handleAlert, setText }) => {
 
     if (!loading) {
       if (success) {
-        dispatch(getMovies({ email: user?.email, token: token })); 
+        dispatch(getLikedMovies({ email: user?.email, token: token }));
       } else {
         timeoutId = setTimeout(handleTimeout, 5000);
       }
@@ -34,7 +34,6 @@ const LoadWatchlist = ({ handleAlert, setText }) => {
     return () => {
       clearTimeout(timeoutId);
     };
-
   }, [user, token, loading, success]);
 
   if (loading || !success) {
@@ -55,9 +54,9 @@ const LoadWatchlist = ({ handleAlert, setText }) => {
           <Navbar />
           <div className="container">
             <div className="content-heading">
-              <h1>Watchlist</h1>
+              <h1>Liked</h1>
             </div>
-            <Watchlist handleAlert={handleAlert} setText={setText} />
+            <Liked handleAlert={handleAlert} setText={setText} />
           </div>
           <Footer />
         </ContentWrapper>
@@ -67,4 +66,4 @@ const LoadWatchlist = ({ handleAlert, setText }) => {
   );
 };
 
-export default LoadWatchlist;
+export default LoadLiked;

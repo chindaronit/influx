@@ -3,27 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Slide from "./Slide";
 
-const Banner = ({
-  data,
-  endpoint,
-  url,
-  genres,
-  handleAlert,
-  setText,
-}) => {
+const Banner = ({ data, endpoint, url, genres, handleAlert, setText }) => {
   return (
     <Swiper
-      style={{
-        "--swiper-pagination-color": "#1976d2",
-        "--swiper-pagination-bullet-inactive-color": "#fff",
-        "--swiper-pagination-bullet-inactive-opacity": "1",
-        "--swiper-pagination-bullet-size": "10px",
-        "--swiper-pagination-bullet-horizontal-gap": "5px",
-      }}
-      spaceBetween={20}
+      slidesPerView={1}
+      spaceBetween={10}
       centeredSlides={true}
       autoplay={{
         delay: 5000,
@@ -33,7 +21,7 @@ const Banner = ({
         clickable: true,
       }}
       navigation={true}
-      modules={[Autoplay, Pagination, Navigation]}
+      modules={[Pagination, Navigation]}
       className="banner"
     >
       {data?.map((item, index) => {

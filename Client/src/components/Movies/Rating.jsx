@@ -11,8 +11,8 @@ const Rating = ({ rating }) => {
         text={rating}
         styles={buildStyles({
           pathColor: rating < 5 ? "red" : rating < 7 ? "orange" : "green",
-            textColor: rating < 5 ? "red" : rating < 7 ? "orange" : "green",
-          textSize:"36px"
+          textColor: rating < 5 ? "red" : rating < 7 ? "orange" : "green",
+          textSize: "24px",
         })}
       />
     </div>

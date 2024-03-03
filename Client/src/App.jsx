@@ -7,7 +7,7 @@ import LoadMovie from "./components/Watch/LoadMovie";
 import ViewAll from "./components/Search/ViewAll";
 import Explore from "./components/Explore/Explore";
 import Subscription from "./components/Subscription/Subscription";
-import Added from "./components/Watchlist/Added";
+import Added from "./components/Specifics/Added";
 import Genre from "./components/Filters/Genre";
 import Trending from "./components/Filters/Trending";
 import Upcoming from "./components/Filters/Upcoming";
@@ -18,15 +18,18 @@ import Popular from "./components/Filters/Popular";
 import PopularTv from "./components/Filters/PopularTv";
 import NowPlaying from "./components/Filters/NowPlaying";
 import AiringTodayTv from "./components/Filters/AiringTodayTv";
-import LoadWatchlist from "./components/Watchlist/LoadWatchlist";
+import LoadWatchlist from "./components/Specifics/LoadWatchlist";
+import LoadFavourite from "./components/Specifics/LoadFavourite";
+import LoadLiked from "./components/Specifics/LoadLiked";
+import LoadHistory from "./components/Specifics/LoadHistory";
 import Signup from "./components/Auth/Signup";
 import Signin from "./components/Auth/Signin";
 import { getTokenFromCookie } from "./features/auth/authSlice";
 import FetchApiConfig from "./functions/FetchApiConfig";
 import FetchApiGenres from "./functions/FetchApiGenres";
 import PageNotFound from "./components/404/PageNotFound";
-import "https://d3w3swjt2wvcft.cloudfront.net/Client/src/App.css";
-
+import Profile from "./components/Profile/Profile";
+import "./App.css";
 
 function App() {
   const [showWatchListAlert, setShowWatchListAlert] = useState(false);
@@ -67,6 +70,7 @@ function App() {
           path="/"
           element={<Home handleAlert={handleAlert} setText={setText} />}
         />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<Search />} />
         <Route
           path="/search/:query"
@@ -88,6 +92,24 @@ function App() {
           path="/watchlist"
           element={
             <LoadWatchlist handleAlert={handleAlert} setText={setText} />
+          }
+        />
+        <Route
+          path="/liked"
+          element={
+            <LoadLiked handleAlert={handleAlert} setText={setText} />
+          }
+        />
+        <Route
+          path="/favourite"
+          element={
+            <LoadFavourite handleAlert={handleAlert} setText={setText} />
+          }
+        />
+        <Route
+          path="/history"
+          element={
+            <LoadHistory handleAlert={handleAlert} setText={setText} />
           }
         />
         <Route

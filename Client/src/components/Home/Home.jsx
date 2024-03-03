@@ -7,8 +7,10 @@ import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import Footer from "../Footer/Footer";
-import SideBar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
+import Specifics from "../Specifics/Specifics";
+import Sidebar from "../Sidebar/Sidebar";
+import "./Home.css";
 
 const Home = ({ handleAlert, setText }) => {
   const { data, loading } = useFetch("/trending/tv/day");
@@ -35,21 +37,28 @@ const Home = ({ handleAlert, setText }) => {
             handleAlert={handleAlert}
             setText={setText}
           />
-          {SectionData.map((item) => {
-            return (
-              <Section
-                item={item}
-                key={item.id}
-                handleAlert={handleAlert}
-                setText={setText}
-              />
-            );
-          })}
+        </div>
+        <div className="container">
+          <Specifics />
+        </div>
+        <div className="container">
+          <div className="mt-2">
+            {SectionData.map((item) => {
+              return (
+                <Section
+                  item={item}
+                  key={item.id}
+                  handleAlert={handleAlert}
+                  setText={setText}
+                />
+              );
+            })}
+          </div>
         </div>
 
         <Footer />
       </ContentWrapper>
-      <SideBar handleAlert={handleAlert} setText={setText}/>
+      <Sidebar />
     </>
   );
 };

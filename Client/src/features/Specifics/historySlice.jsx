@@ -1,30 +1,30 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchDataFromApi } from "../../utils/api";
 import axios from "axios";
-import {PORT} from "../../utils/config";
+import { PORT } from "../../utils/config";
 
-const url = `${PORT}/watchlist/api`;
+const url = `${PORT}/history/api`;
 const initialState = {
   movies: [],
   loading: true,
 };
 
-export const getMovies = createAsyncThunk(
-  "/watchlist",
-  async({email,token}, thunkAPI) => {
+export const getHistoryMovies = createAsyncThunk(
+  "/history",
+  async ({ email, token }, thunkAPI) => {
     try {
       const res = await axios.get(url, {
         params: { email: email },
         headers: {
-          "authorization": `Bearer ${token}`,
+          authorization: `Bearer ${token}`,
         },
       });
 
-      const dataWatchlist = res.data;
+      const dataHistory = res.data;
       const movieList = [];
 
       // Use Promise.all to wait for all promises to resolve
-      const promises = dataWatchlist.map((item) =>
+      const promises = dataHistory.map((item) =>
         fetchDataFromApi(`/${item.media_type}/${item.id}`)
       );
 
@@ -34,7 +34,7 @@ export const getMovies = createAsyncThunk(
         // Map over movieDataArray and add media_type property
         const enrichedMovieDataArray = movieDataArray.map((data, index) => ({
           ...data,
-          media_type: dataWatchlist[index].media_type,
+          media_type: dataHistory[index].media_type,
         }));
 
         movieList.push(...enrichedMovieDataArray.filter((data) => data)); // Filter out undefined values
@@ -49,8 +49,8 @@ export const getMovies = createAsyncThunk(
   }
 );
 
-const watchlistSlice = createSlice({
-  name: "watchlist",
+const historySlice = createSlice({
+  name: "history",
   initialState,
   reducers: {
     removeMovie: (state, action) => {
@@ -64,19 +64,19 @@ const watchlistSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getMovies.pending, (state) => {
+      .addCase(getHistoryMovies.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getMovies.fulfilled, (state, action) => {
+      .addCase(getHistoryMovies.fulfilled, (state, action) => {
         state.loading = false;
         state.movies = action.payload;
       })
-      .addCase(getMovies.rejected, (state, action) => {
+      .addCase(getHistoryMovies.rejected, (state, action) => {
         console.log(action); // use of thunkapi is here check payload of the object
         state.loading = false;
       });
   },
 });
 
-export const { addMovie, addMovieList, removeMovie } = watchlistSlice.actions;
-export default watchlistSlice.reducer;
+export const { addMovie, addMovieList, removeMovie } = historySlice.actions;
+export default historySlice.reducer;

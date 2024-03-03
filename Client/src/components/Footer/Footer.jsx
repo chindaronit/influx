@@ -5,7 +5,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import { GitHub, LinkedIn, Twitter } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import ContentWrapper from "../ContentWrapper/ContentWrapper";
+import "./Footer.css";
 
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
                 About Us
               </Typography>
               <Typography variant="body2" color="rgba(255,255,255,0.7)">
-                Hey! I'm Ronit Chinda, UnderGrad at IIIT Guwahati,India.
+                Hey! I'm Ronit Chinda, UnderGrad at IIIT Guwahati, India.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={4}>

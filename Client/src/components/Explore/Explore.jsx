@@ -12,6 +12,7 @@ import SideBar from "../Sidebar/Sidebar";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import "./Explore.css";
 
 let filters = {};
 
@@ -73,7 +74,7 @@ const Explore = ({ handleAlert, setText }) => {
         <Navbar />
         <div className="explorePage container">
           <h2 className="heading ml-4 mt-4">
-            {mediaType === "tv" ? "Explore TV Shows" : "Explore Movies"}
+            {mediaType === "tv" ? "Explore TV" : "Explore Movies"}
           </h2>
           <div className="filters">
             <Select
@@ -115,14 +116,13 @@ const Explore = ({ handleAlert, setText }) => {
                     {data?.results?.map((item, index) => {
                       if (item.media_type === "person") return;
                       return (
-                        <div className="item" key={index}>
-                          <Slide
-                            data={item}
-                            endpoint={mediaType}
-                            handleAlert={handleAlert}
-                            setText={setText}
-                          />
-                        </div>
+                        <Slide
+                          data={item}
+                          endpoint={mediaType}
+                          handleAlert={handleAlert}
+                          setText={setText}
+                          key={index}
+                        />
                       );
                     })}
                   </div>
@@ -137,7 +137,7 @@ const Explore = ({ handleAlert, setText }) => {
         </div>
         <Footer />
       </ContentWrapper>
-      <SideBar handleAlert={handleAlert} setText={setText}/>
+      <SideBar handleAlert={handleAlert} setText={setText} />
     </>
   );
 };

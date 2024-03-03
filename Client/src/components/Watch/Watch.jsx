@@ -5,6 +5,7 @@ import Banner from "./Banner";
 import Cast from "./Cast";
 import Clips from "./Clips";
 import Movies from "../Movies/Movies";
+import "./Watch.css";
 
 const Watch = ({
   video,
@@ -46,7 +47,8 @@ const Watch = ({
       />
       <RelatedInfo item={item} crew={crew} poster={poster} />
       <Cast cast={cast} />
-      <Clips clips={video} />
+      {video?.length > 0 && <Clips clips={video} />}
+
       {similar?.length > 0 && (
         <Movies
           sectionName={"similar"}

@@ -1,0 +1,217 @@
+.row-container {
+  box-sizing: border-box;
+  margin: 0 2rem;
+
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    font-weight: bold;
+
+    .text {
+      opacity: 0.85;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: capitalize;
+    }
+
+    .show-all {
+      opacity: 0.75;
+      font-size: 18px;
+      color: white;
+      text-decoration: underline;
+    }
+  }
+}
+
+.movie-list {
+  padding: 2rem 0 !important;
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    --swiper-navigation-color: white;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    margin-bottom: 5rem !important;
+  }
+}
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem !important;
+}
+
+.slide {
+  transition: transform 0.5s ease-out;
+  z-index: 0;
+  width: 28rem;
+
+  .img {
+    position: relative;
+    width: 28rem;
+    border-radius: 0.5rem;
+  }
+
+  .title {
+    margin: 0.5rem 1rem;
+    opacity: 0.85;
+    text-align: center;
+    font-size: larger;
+  }
+
+  .release-date {
+    margin: 0rem 1rem;
+    opacity: 0.75;
+    text-align: center;
+    font-size: large;
+  }
+
+  .btn-container {
+    position: absolute;
+    display: flex;
+    left: 5%;
+    bottom: 25%;
+  }
+
+  .add-btn {
+    position: relative;
+
+    .watch-btn {
+      font-weight: bold !important;
+      border-radius: 0.15rem !important;
+    }
+
+    .add-icon {
+      color: #1976d2;
+      min-width: 2rem;
+      min-height: 2rem;
+      border-radius: 50%;
+      padding: 0.25rem;
+      background-color: rgba(255, 255, 255);
+    }
+
+    .add-to-watchlist {
+      position: absolute;
+      background-color: white;
+      color: #1976d2;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      width: 8rem;
+      bottom: 100%;
+      margin-bottom: 0.5rem;
+      visibility: hidden;
+      font-size: 12px;
+    }
+  }
+
+  .add-btn:hover {
+    .add-to-watchlist {
+      visibility: visible;
+    }
+  }
+}
+
+.circleRating {
+  position: absolute;
+  background-color: white;
+  bottom: 20%;
+  right: 4%;
+  border-radius: 50%;
+  width: 4rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .row-container {
+    box-sizing: border-box;
+    margin: 0 0;
+
+    .heading {
+      font-weight: bold;
+
+      .text {
+        opacity: 0.85;
+        font-size: 20px;
+        font-weight: 300;
+      }
+
+      .show-all {
+        font-size: 12px;
+      }
+    }
+  }
+  .movie-list {
+    padding: 1rem 0 !important;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      font-size: 25px;
+      width: 10px;
+      height: 10px;
+      --swiper-navigation-color: white;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      margin-bottom: 2rem !important;
+    }
+  }
+
+  .swiper-slide {
+    margin: 0.25rem !important;
+  }
+
+  .slide {
+    width: 7.25rem;
+
+    .img {
+      width: 7.25rem;
+      border-radius: 0.5rem;
+    }
+
+    .title {
+      font-size: 12px;
+      font-weight: 300;
+      margin: 0;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .release-date {
+      font-size: smaller;
+      margin: 0;
+      font-weight: 100;
+      font-size: 12px;
+    }
+  }
+
+  .add-btn:hover {
+    .add-to-watchlist {
+      visibility: hidden !important;
+    }
+  }
+
+  .circleRating {
+    background-color: white;
+    bottom: 82%;
+    right: 4%;
+    border-radius: 50%;
+    width: 1.5rem;
+  }
+
+  .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+    padding: 2px !important;
+  }
+}

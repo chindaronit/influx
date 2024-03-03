@@ -2,15 +2,9 @@ import React from "react";
 
 const Item = ({ item }) => {
   return (
-    <li className="nav-item">
-      <div>
-        <div className="icon-div">
-          <item.icon className="icon" />
-        </div>
-        <div className="icon-value">
-          <h3>{item.value}</h3>
-        </div>
-      </div>
+    <li className="sidebar-item">
+      <item.icon className="icon" />
+      <h3>{item.value}</h3>
     </li>
   );
 };

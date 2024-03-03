@@ -14,7 +14,7 @@ const Search = ({ name }) => {
         <Navbar name={name} />
         <div className="container">
           <SearchBar placeholder="Search" />
-          <h2 className="ml-4 mt-2 mb-2">Popular Movie Genre</h2>
+          <h2 className="ml-4 mt-2 mb-2 genre-heading">Popular Movie Genre</h2>
           <div className="d-flex jc-center f-wrap m-5">
             {SearchBarData.map((item, index) => {
               return (

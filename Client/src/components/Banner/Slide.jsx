@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {PORT} from "../../utils/config";
+import { PORT } from "../../utils/config";
 
 const Slide = ({ data, endpoint, url, genres, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
@@ -52,23 +52,25 @@ const Slide = ({ data, endpoint, url, genres, handleAlert, setText }) => {
     <div>
       <img src={src} alt={data.title} />
       <div className="banner-info-container">
-        <div className="info">
-          <h1>{data.name || data.title}</h1>
-          <h5 className="overview">{data.overview}</h5>
-          <div className="d-flex jc-center blue">
-            <h3>{dayjs(data.release_date).format("MMM D,YYYY")}</h3>
-            <h3>|</h3>
-            {data.genre_ids.slice(0, 2).map((item, index, array) => {
-              if (!genres[item]?.name) return null;
-              return (
-                <React.Fragment key={index}>
-                  <h3>{genres[item].name}</h3>
-                  {index < array.length - 1 && <h3>|</h3>}
-                </React.Fragment>
-              );
-            })}
-          </div>
+        <div className="banner-info-title">{data.name || data.title}</div>
+        <div className="banner-info-overview">
+          {data.overview.split(" ").slice(0, 50).join(" ")}...
         </div>
+
+        <div className="d-flex jc-center blue">
+          <h3>{dayjs(data.release_date).format("MMM D,YYYY")}</h3>
+          <h3>|</h3>
+          {data.genre_ids.slice(0, 2).map((item, index, array) => {
+            if (!genres[item]?.name) return null;
+            return (
+              <React.Fragment key={index}>
+                <h3>{genres[item].name}</h3>
+                {index < array.length - 1 && <h3>|</h3>}
+              </React.Fragment>
+            );
+          })}
+        </div>
+
         <div className="banner-btn-container">
           <Link to={`/${endpoint}/${data.id}`}>
             <Button variant="contained" className="watch-btn">

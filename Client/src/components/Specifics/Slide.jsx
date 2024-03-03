@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { Button, IconButton } from "@mui/material";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import Rating from "./Rating";
+import Rating from "../Movies/Rating";
 import Img from "../LadyLoadImage/Img";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeMovie } from "../../features/Specifics/watchlistSlice";
+import { useNavigate } from "react-router-dom";
 import { PORT } from "../../utils/config";
-import { Button, IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 
 const Slide = ({ data, endpoint, handleAlert, setText }) => {
   const [src, setSrc] = useState(null);
-  const [poster, setPoster] = useState(null);
   const url = useSelector((state) => state.homePage.url);
-  const { user, token } = useSelector((state) => state.authSlice);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user, token } = useSelector((state) => state.authSlice);
+  const [poster, setPoster] = useState(null);
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -35,37 +39,6 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
     }
   }, [url, data]);
 
-  const handleClick = async () => {
-    if (!user || !token || !user?.email) {
-      setText("Login first!");
-      handleAlert();
-    } else {
-      try {
-        const res = await fetch(`${PORT}/watchlist/api`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            email: user.email,
-            id: data.id,
-            media_type: endpoint,
-          }),
-        });
-
-        if (res.status === 200) {
-          setText("Added to Watchlist");
-          handleAlert();
-        } else if (res.status === 401) {
-          navigate("/signin");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
   useEffect(() => {
     const handleResize = () => {
       setWindowSize(window.innerWidth);
@@ -78,10 +51,37 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
     };
   }, []);
 
+  const handleClick = async () => {
+    try {
+      const res = await fetch(`${PORT}/watchlist/api`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          email: user.email,
+          id: data.id,
+          media_type: endpoint,
+        }),
+      });
+
+      if (res.status === 200) {
+        dispatch(removeMovie({ id: data.id }));
+        setText("Removed From Wathclist");
+        handleAlert();
+      } else if (res.status === 401) {
+        navigate("/signin");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const srcOrPoster = windowSize >= 1024 ? src : poster;
 
   return srcOrPoster ? (
-    <div className="slide" key={data.id}>
+    <div className="slide m-2" key={data.id}>
       <Img src={srcOrPoster} alt={data.title} className="img" />
       <h3 className="title">{data.title || data.name}</h3>
       <h5 className="release-date blue">
@@ -95,8 +95,7 @@ const Slide = ({ data, endpoint, handleAlert, setText }) => {
         </Link>
         <div className="add-btn">
           <IconButton onClick={handleClick}>
-            <AddIcon className="add-icon" />
-            <div className="add-to-watchlist">Add to Watchlist</div>
+            <RemoveIcon className="remove-icon" />
           </IconButton>
         </div>
       </div>

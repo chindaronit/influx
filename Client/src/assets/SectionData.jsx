@@ -16,14 +16,14 @@ const SectionData = [
   {
     id: "3",
     sectionName: "trending",
-    sectionMedia: "tv shows",
+    sectionMedia: "tv",
     endpoint: "tv",
     path: "/trending/tv/week",
   },
   {
     id: "4",
     sectionName: "popular",
-    sectionMedia: "tv shows",
+    sectionMedia: "tv",
     endpoint: "tv",
     path: "/tv/popular",
   },
@@ -44,7 +44,7 @@ const SectionData = [
   {
     id: "7",
     sectionName: "top rated",
-    sectionMedia: "tv shows",
+    sectionMedia: "tv",
     endpoint: "tv",
     path: "/tv/top_rated",
   },
@@ -58,7 +58,7 @@ const SectionData = [
   {
     id: "9",
     sectionName: "airing today",
-    sectionMedia: "tv shows",
+    sectionMedia: "tv",
     endpoint: "tv",
     path: "/tv/airing_today",
   },

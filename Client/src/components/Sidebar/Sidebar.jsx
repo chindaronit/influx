@@ -9,64 +9,49 @@ import { useSelector, useDispatch } from "react-redux";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { handleLogout } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import "./Sidebar.css";
 
-const SideBar = ({handleAlert,setText}) => {
+const SideBar = ({ handleAlert, setText }) => {
   const { user, token } = useSelector((state) => state.authSlice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
     <nav className="sidebar">
-      <div className="container">
+      <div className="container mb-2">
         <div className="logo">
           <IconButton>
-            <img
-              src="/src/assets/logo.svg"
-              alt="logo"
-              style={{ width: "4rem" }}
-            />
+            <img src="/src/assets/logo.svg" alt="logo" />
           </IconButton>
-          <div className="txt">
+          <div className="logo-txt">
             <h1>Influx</h1>
           </div>
         </div>
-      </div>
-      <div className="container">
-        <ul className="nav-list">
+        <ul className="sidebar-list">
           {NavItemData.map((item, index) => {
             return (
-              <Link to={`/${item.path}`} key={index}>
+              <Link to={`/${item.path}`} key={index} className="link">
                 <Item item={item} />
               </Link>
             );
           })}
-        </ul>
-      </div>
-
-      <div className="container">
-        <ul className="nav-list">
           {OptionsData.map((item, index) => {
             return (
-              <Link to={`/section/${item.path}`} key={index}>
+              <Link to={`/section/${item.path}`} key={index} className="link">
                 <Item item={item} key={index} />
               </Link>
             );
           })}
-        </ul>
-      </div>
-
-      <div className="container">
-        <ul className="nav-list">
           {UserRelatedData.map((item, index) => {
             return (
-              <Link to={`/${item.path}`} key={index}>
+              <Link to={`/${item.path}`} key={index} className="link">
                 <Item item={item} key={index} />
               </Link>
             );
           })}
           {user && user.email && token ? (
             <li
-              className="nav-item"
+              className="sidebar-item"
               onClick={() => {
                 dispatch(handleLogout());
                 setText("Successfully logged Out!");
@@ -74,26 +59,15 @@ const SideBar = ({handleAlert,setText}) => {
                 navigate("/");
               }}
             >
-              <div>
-                <div className="icon-div">
-                  <LogoutIcon className="icon" />
-                </div>
-                <div className="icon-value">
-                  <h3>Logout</h3>
-                </div>
-              </div>
+              <LogoutIcon className="icon" />
+              <h3>Logout</h3>
             </li>
           ) : (
-            <Link to="/signin">
-              <li className="nav-item">
-                <div>
-                  <div className="icon-div">
-                    <LogoutIcon className="icon" />
-                  </div>
-                  <div className="icon-value">
-                    <h3>Login</h3>
-                  </div>
-                </div>
+            <Link to="/signin" className="link">
+              <li className="sidebar-item">
+                <LogoutIcon className="icon" />
+
+                <h3>Login</h3>
               </li>
             </Link>
           )}

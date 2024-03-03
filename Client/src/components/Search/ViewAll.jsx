@@ -9,6 +9,7 @@ import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import Navbar from "../Navbar/Navbar";
 import SideBar from "../Sidebar/Sidebar";
 import Footer from "../Footer/Footer";
+import "./Sidebar.css";
 
 const ViewAll = ({ handleAlert, setText }) => {
   const [data, setData] = useState(null);

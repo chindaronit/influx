@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Slide from "./Slide";
 import { Link } from "react-router-dom";
+import "./Movies.css";
 
 const Movies = ({
   sectionName,
@@ -14,7 +15,7 @@ const Movies = ({
   endpoint,
   handleAlert,
   setText,
-  path
+  path,
 }) => {
   return (
     <div className="row-container">
@@ -26,22 +27,8 @@ const Movies = ({
       </div>
 
       <Swiper
-        slidesPerView={1}
+        slidesPerView={3}
         spaceBetween={0}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          928: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 50,
-          },
-        }}
         navigation={true}
         modules={[Navigation]}
         className="movie-list"

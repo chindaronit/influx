@@ -2,8 +2,8 @@ import Slide from "./Slide";
 import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
 
-const Watchlist = ({ handleAlert, setText }) => {
-  const { movies, loading } = useSelector((state) => state.watchlist);
+const History = ({ handleAlert, setText }) => {
+  const { movies, loading } = useSelector((state) => state.history);
 
   if (loading) {
     return (
@@ -31,4 +31,4 @@ const Watchlist = ({ handleAlert, setText }) => {
   );
 };
 
-export default Watchlist;
+export default History;

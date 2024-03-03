@@ -1,0 +1,190 @@
+/* Banner Component */
+
+:root {
+  --swiper-pagination-color: #1976d2;
+  --swiper-pagination-bullet-inactive-color: #fff;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+}
+
+.banner {
+  position: relative;
+}
+
+.banner-info-container {
+  position: absolute;
+  max-width: 30vw;
+  bottom: 10%;
+  left: 10%;
+  visibility: hidden;
+
+  .banner-info-title {
+    font-size: 36px;
+    margin-bottom: 2rem;
+    font-weight: 900;
+  }
+
+  h3 {
+    margin-right: 1rem;
+  }
+
+  .banner-info-overview {
+    font-size: 24px;
+    margin-bottom: 1rem;
+    opacity: 0.75;
+  }
+
+  .banner-btn-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    visibility: hidden;
+
+    .add-btn {
+      position: relative;
+
+      .btn {
+        color: #1976d2;
+        min-width: 4rem;
+        min-height: 4rem;
+        border-radius: 50%;
+        padding: 0.5rem;
+        background-color: rgba(255, 255, 255);
+      }
+
+      .add-to-watchlist {
+        position: absolute;
+        background-color: white;
+        color: #1976d2;
+        padding: 1rem;
+        bottom: 100%;
+        right: -60%;
+        border-radius: 0.25rem;
+        width: 15rem;
+        visibility: hidden;
+        font-size: 18px;
+      }
+    }
+
+    .add-btn:hover {
+      .add-to-watchlist {
+        visibility: visible;
+      }
+    }
+
+    .watch-btn {
+      min-width: 10rem !important;
+      min-height: 3rem;
+      font-size: 24px !important;
+      font-weight: bold !important;
+      border-radius: 0.5rem !important;
+      padding: 1rem 2rem !important;
+      z-index: 1;
+    }
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s ease;
+}
+
+.banner:hover {
+  .banner-info {
+    color: white;
+  }
+
+  .banner-info-title {
+    text-align: center;
+  }
+
+  .banner-info h3 {
+    text-align: left;
+  }
+
+  .swiper-slide img {
+    opacity: 0.1;
+  }
+
+  .banner-info-container {
+    visibility: visible;
+  }
+
+  .banner-btn-container {
+    visibility: visible;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --swiper-navigation-size: 20px;
+    --swiper-pagination-bullet-size: 5px;
+  }
+
+  .banner-info-container {
+    max-width: 60vw;
+    bottom: 12%;
+    left: 15%;
+
+    .banner-info-title {
+      font-size: 16px;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    h3 {
+      font-size: 8px;
+      margin-right: 0.25rem;
+    }
+
+    .banner-info-overview {
+      font-size: 10px;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .banner-btn-container {
+      margin-top: 1rem;
+
+      .add-btn {
+        .btn {
+          min-width: 1rem;
+          min-height: 1rem;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+      }
+
+      .add-btn:hover {
+        .add-to-watchlist {
+          visibility: hidden;
+        }
+      }
+
+      .watch-btn {
+        min-width: 4rem !important;
+        min-height: 2rem;
+        font-size: 8px !important;
+        font-weight: bold !important;
+        border-radius: 0.15rem !important;
+        padding: 0.25rem !important;
+      }
+    }
+  }
+}

@@ -60,7 +60,7 @@ const LoadMovie = ({ handleAlert, setText }) => {
           />
           <Footer />
         </ContentWrapper>
-        <SideBar handleAlert={handleAlert} setText={setText}/>
+        <SideBar handleAlert={handleAlert} setText={setText} />
       </>
     )
   );
