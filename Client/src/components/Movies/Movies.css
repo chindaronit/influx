@@ -3,16 +3,16 @@
   margin: 0 2rem;
 
   .heading {
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
-
     font-weight: bold;
 
     .text {
       opacity: 0.85;
-      font-size: 24px;
+      font-size: 32px;
       font-weight: 900;
       text-transform: capitalize;
     }
@@ -56,9 +56,10 @@
   transition: transform 0.5s ease-out;
   z-index: 0;
   width: 28rem;
+  height: 20rem;
+  position: relative;
 
   .img {
-    position: relative;
     width: 28rem;
     border-radius: 0.5rem;
   }
@@ -80,7 +81,9 @@
   .btn-container {
     position: absolute;
     display: flex;
-    left: 5%;
+    visibility: hidden;
+    align-items: center;
+    left: 4%;
     bottom: 25%;
   }
 
@@ -94,8 +97,8 @@
 
     .add-icon {
       color: #1976d2;
-      min-width: 2rem;
-      min-height: 2rem;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
       border-radius: 50%;
       padding: 0.25rem;
       background-color: rgba(255, 255, 255);
@@ -122,13 +125,22 @@
   }
 }
 
+.slide:hover {
+  .btn-container {
+    visibility: visible;
+  }
+  .img {
+    opacity: 0.5 !important;
+  }
+}
+
 .circleRating {
   position: absolute;
   background-color: white;
-  bottom: 20%;
-  right: 4%;
+  bottom: 25%;
+  right: 8%;
   border-radius: 50%;
-  width: 4rem;
+  width: 3rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -174,11 +186,19 @@
   }
 
   .slide {
-    width: 7.25rem;
+    width: 7rem;
+    height: 15rem;
 
     .img {
-      width: 7.25rem;
+      width: 7rem;
+      height: 11rem;
       border-radius: 0.5rem;
+    }
+
+    .btn-container {
+      visibility: visible;
+      left: 4%;
+      bottom: 27%;
     }
 
     .title {
@@ -195,6 +215,29 @@
       font-weight: 100;
       font-size: 12px;
     }
+
+    .add-btn {
+      position: relative;
+
+      .watch-btn {
+        font-weight: bold !important;
+        border-radius: 0.15rem !important;
+      }
+
+      .add-icon {
+        min-width: 1.5rem;
+        min-height: 1.5rem;
+        border-radius: 50%;
+        padding: 0.25rem;
+        background-color: rgba(255, 255, 255);
+      }
+    }
+
+    .add-btn:hover {
+      .add-to-watchlist {
+        visibility: hidden;
+      }
+    }
   }
 
   .add-btn:hover {
@@ -205,13 +248,16 @@
 
   .circleRating {
     background-color: white;
-    bottom: 82%;
-    right: 4%;
+    bottom: 85%;
+    right: 2%;
     border-radius: 50%;
-    width: 1.5rem;
+    width: 2rem;
   }
 
-  .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
-    padding: 2px !important;
+  .css-jh47zj-MuiButtonBase-root-MuiButton-root {
+    width: 1rem !important;
+    padding: 0 !important;
+    height: 2rem !important;
+    font-size: 0.5rem !important;
   }
 }

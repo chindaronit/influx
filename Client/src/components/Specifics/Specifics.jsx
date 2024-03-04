@@ -16,7 +16,7 @@ const Specifics = () => {
     } else if (hour < 16) {
       setTime("Good Noon!");
     } else {
-      setTime("Good evening!");
+      setTime("Good Evening!");
     }
   }, []);
 

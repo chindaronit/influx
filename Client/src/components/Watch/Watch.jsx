@@ -45,7 +45,7 @@ const Watch = ({
         setText={setText}
         endpoint={endpoint}
       />
-      <RelatedInfo item={item} crew={crew} poster={poster} />
+      {<RelatedInfo item={item} crew={crew} poster={poster} />}
       <Cast cast={cast} />
       {video?.length > 0 && <Clips clips={video} />}
 

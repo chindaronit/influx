@@ -11,25 +11,11 @@ const Cast = ({ cast }) => {
   const { url } = useSelector((state) => state.homePage);
 
   return (
-    <div className="ml-2">
-      <h2 className="mb-2 text bold">Starring</h2>
+    <>
+      <h2 className="starring">Starring</h2>
       <Swiper
-        slidesPerView={5}
-        spaceBetween={10}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          928: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 50,
-          },
-        }}
+        slidesPerView={6}
+        spaceBetween={0}
         navigation={true}
         modules={[Navigation]}
         className="cast-list"
@@ -51,7 +37,7 @@ const Cast = ({ cast }) => {
           );
         })}
       </Swiper>
-    </div>
+    </>
   );
 };
 

@@ -41,20 +41,16 @@ const Home = ({ handleAlert, setText }) => {
         <div className="container">
           <Specifics />
         </div>
-        <div className="container">
-          <div className="mt-2">
-            {SectionData.map((item) => {
-              return (
-                <Section
-                  item={item}
-                  key={item.id}
-                  handleAlert={handleAlert}
-                  setText={setText}
-                />
-              );
-            })}
-          </div>
-        </div>
+        {SectionData.map((item) => {
+          return (
+            <Section
+              item={item}
+              key={item.id}
+              handleAlert={handleAlert}
+              setText={setText}
+            />
+          );
+        })}
 
         <Footer />
       </ContentWrapper>

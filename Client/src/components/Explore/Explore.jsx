@@ -73,7 +73,7 @@ const Explore = ({ handleAlert, setText }) => {
       <ContentWrapper>
         <Navbar />
         <div className="explorePage container">
-          <h2 className="heading ml-4 mt-4">
+          <h2 className="heading mt-4">
             {mediaType === "tv" ? "Explore TV" : "Explore Movies"}
           </h2>
           <div className="filters">

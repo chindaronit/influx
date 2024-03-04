@@ -34,7 +34,7 @@ const NowPlaying = ({ handleAlert, setText }) => {
         <ContentWrapper>
           <Navbar />
           <div className="container">
-            <h2 className="heading text bold ml-4 mt-4">Now Playing Movies</h2>
+            <h2 className="heading text bold mt-4">Now Playing Movies</h2>
             {data?.results?.length > 0 ? (
               <>
                 <InfiniteScroll
@@ -52,14 +52,13 @@ const NowPlaying = ({ handleAlert, setText }) => {
                     {data?.results.map((item, index) => {
                       if (item.media_type === "person") return;
                       return (
-                        <div className="item" key={index}>
-                          <Slide
-                            data={item}
-                            endpoint={"movie"}
-                            handleAlert={handleAlert}
-                            setText={setText}
-                          />
-                        </div>
+                        <Slide
+                          data={item}
+                          endpoint={"movie"}
+                          handleAlert={handleAlert}
+                          setText={setText}
+                          key={index}
+                        />
                       );
                     })}
                   </div>

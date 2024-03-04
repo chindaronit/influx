@@ -92,7 +92,7 @@ const RelatedInfo = ({ item, crew, poster }) => {
           })}
         </ul>
 
-        <span className="text bold ml-2">
+        <span className="text bold language">
           <u>Languages:</u>
         </span>
         <span className="text blue capitalize">

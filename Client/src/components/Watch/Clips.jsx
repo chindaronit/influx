@@ -13,26 +13,12 @@ const Clips = ({ clips }) => {
   const [videoId, setVideoId] = useState(null);
 
   return clips ? (
-    <div className="ml-2 mt-2 mb-2 clips">
-      <h2 className="heading text bold">Related Clips & Videos</h2>
+    <div className="clips">
+      <h2>Related Clips & Videos</h2>
 
       <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          928: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 50,
-          },
-        }}
+        slidesPerView={2}
+        spaceBetween={10}
         navigation={true}
         modules={[Navigation]}
         className="clips-list"
@@ -44,7 +30,7 @@ const Clips = ({ clips }) => {
               setVideoId(video.key);
               setShow(true);
             }}
-            className="slide"
+            className="clips-swiper-slide"
           >
             <div className="thumbnail">
               <img

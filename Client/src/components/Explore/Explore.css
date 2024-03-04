@@ -47,12 +47,20 @@
   border-radius: 2rem !important;
 }
 
+.heading {
+  margin-bottom: 2rem;
+  margin-left: 4rem;
+}
+
 .wrapper {
-  margin: 0;
-  padding: 0;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-wrap: wrap;
+
   .slide {
-    /* margin-right: 0.5rem !important; */
-    margin-bottom: 1rem !important;
+    margin-right: 1rem !important;
+    margin-bottom: 2rem !important;
   }
 }
 
@@ -86,8 +94,10 @@
     .slide {
       margin-right: 0.5rem !important;
       width: 8rem;
+      height: 16rem;
       img {
         width: 8rem;
+        height: 12rem;
       }
       margin-bottom: 1rem !important;
     }

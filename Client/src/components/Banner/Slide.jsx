@@ -54,7 +54,7 @@ const Slide = ({ data, endpoint, url, genres, handleAlert, setText }) => {
       <div className="banner-info-container">
         <div className="banner-info-title">{data.name || data.title}</div>
         <div className="banner-info-overview">
-          {data.overview.split(" ").slice(0, 50).join(" ")}...
+          {data.overview.split(" ").slice(0, 30).join(" ")}...
         </div>
 
         <div className="d-flex jc-center blue">

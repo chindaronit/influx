@@ -7,16 +7,18 @@ const Section = ({ item, handleAlert, setText }) => {
 
   return (
     !loading && (
-      <Movies
-        sectionName={item.sectionName}
-        sectionMedia={item.sectionMedia}
-        data={data.results}
-        key={item.id}
-        endpoint={item.endpoint}
-        handleAlert={handleAlert}
-        setText={setText}
-        path={item.path}
-      />
+      <div className="container">
+        <Movies
+          sectionName={item.sectionName}
+          sectionMedia={item.sectionMedia}
+          data={data.results}
+          key={item.id}
+          endpoint={item.endpoint}
+          handleAlert={handleAlert}
+          setText={setText}
+          path={item.path}
+        />
+      </div>
     )
   );
 };
