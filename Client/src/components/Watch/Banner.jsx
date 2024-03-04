@@ -63,7 +63,7 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
         <h3 className="subtitle">{item.tagline}</h3>
         <h4 className="overview">{item.overview}</h4>
 
-        <div className="d-flex jc-center info blue f-wrap">
+        <div className="genre blue">
           {item.genres.map((item, index, array) => {
             return (
               <React.Fragment key={item.id}>
@@ -73,7 +73,7 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
             );
           })}
         </div>
-        <div className="d-flex jc-center pos-rel">
+        <div className="watch-btn-container">
           <Button variant="contained" className="watch-btn">
             WATCH
           </Button>

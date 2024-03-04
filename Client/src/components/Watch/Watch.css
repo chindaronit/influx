@@ -4,6 +4,15 @@
   position: relative;
   box-sizing: border-box;
 
+  .genre {
+    display: flex;
+    justify-content: center;
+    h3 {
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+
   .img {
     width: 100%;
     height: 100%;
@@ -77,6 +86,10 @@
       margin: 1rem 0;
       opacity: 0.85;
     }
+  }
+
+  .watch-btn-container {
+    display: flex;
   }
 
   .watch-btn {
@@ -173,13 +186,12 @@
 .starring {
   margin-top: 2rem;
   margin-left: 2rem;
+  font-size: 28px;
+  margin-bottom: 2rem;
 }
 
 .cast-list {
   padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   .cast-item {
     align-items: center;
@@ -218,60 +230,99 @@
   .swiper-button-next:after {
     margin-bottom: 5rem !important;
   }
+}
 
-  .swiper-slide {
-    margin: 0 !important;
+.clips-list {
+  padding: 1rem;
+
+  .thumbnail {
+    margin-bottom: 1rem;
+    position: relative;
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      transition: all 0.25s ease-in-out;
+    }
+
+    svg {
+      position: absolute;
+      color: #1976d2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+    }
+
+    &:hover {
+      img {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    --swiper-navigation-color: white;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
   }
 }
 
-.clips {
-  h2 {
-    margin-top: 2rem;
+.watch-content {
+  .heading {
+    margin-top: 3rem;
     margin-left: 2rem;
+    margin-bottom: 0rem;
+    .text {
+      margin-left: 0rem;
+      font-size: 28px;
+    }
   }
-
-  .clips-list {
-    .thumbnail {
-      margin-bottom: 1rem;
-      position: relative;
-
-      img {
-        width: 100%;
-        display: block;
-        border-radius: 12px;
-        transition: all 0.25s ease-in-out;
-      }
-
-      svg {
-        position: absolute;
-        color: #1976d2;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50px;
-        height: 50px;
-      }
-
-      &:hover {
-        img {
-          opacity: 0.25;
-        }
-      }
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      font-size: 20px;
-      width: 40px;
-      height: 40px;
-      --swiper-navigation-color: white;
-      background-color: transparent;
-      transition: background-color 0.3s ease;
-    }
+  .show-all {
+    display: none;
   }
 }
 
 @media only screen and (max-width: 600px) {
+  .genre {
+    display: flex;
+    h3 {
+      font-size: small !important;
+      margin-right: 0.25rem;
+    }
+  }
+
+  .watch-btn-container {
+    display: block;
+  }
+
+  .watch-content {
+    .heading {
+      margin-top: 1rem;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+      .text {
+        font-weight: bold;
+        margin-left: 0rem;
+        font-size: 16px;
+      }
+    }
+    .slide {
+      .title {
+        font-size: 12px;
+      }
+      .release-date {
+        font-size: 10px;
+      }
+    }
+  }
+
   .related-info {
     margin: 1.75rem 1rem;
     display: block;
@@ -315,6 +366,7 @@
   .starring {
     margin-top: 1rem;
     margin-left: 1rem;
+    margin-bottom: 0rem;
     font-size: medium;
   }
 
@@ -324,13 +376,12 @@
     .cast-item .profile {
       width: 5rem;
       height: 5rem;
-      overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .name {
       opacity: 0.75;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.15rem;
       font-size: small;
     }
 
@@ -348,11 +399,7 @@
 
     .swiper-button-prev:after,
     .swiper-button-next:after {
-      margin-bottom: 5rem !important;
-    }
-
-    .swiper-slide {
-      margin: 1.25rem !important;
+      margin-bottom: 0rem !important;
     }
   }
 
@@ -360,26 +407,18 @@
     width: 100%;
   }
 
-  .clips {
-    h2 {
-      margin-top: 1rem;
-      margin-left: 1rem;
-      font-size: medium;
-    }
+  .clips-list {
+    .thumbnail {
+      position: relative;
 
-    .clips-list {
-      .clips-swiper-slide {
-        width: 12rem;
-        margin: 2rem 2.5rem !important;
+      img {
+        width: 18rem;
+        border-radius: 0.25rem;
       }
-      .thumbnail {
-        position: relative;
-
-        img {
-          width: 15rem;
-          border-radius: 0.25rem;
-        }
-
+      svg {
+        color: #1976d2;
+        width: 25px;
+        height: 25px;
       }
     }
   }

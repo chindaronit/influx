@@ -14,11 +14,19 @@ const Cast = ({ cast }) => {
     <>
       <h2 className="starring">Starring</h2>
       <Swiper
-        slidesPerView={6}
+        slidesPerView={9}
         spaceBetween={0}
         navigation={true}
         modules={[Navigation]}
         className="cast-list"
+        breakpoints={{
+          0: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 9,
+          },
+        }}
       >
         {cast?.map((item, index) => {
           const src = item.profile_path

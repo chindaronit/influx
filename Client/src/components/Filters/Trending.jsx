@@ -34,7 +34,7 @@ const Trending = ({ handleAlert, setText }) => {
         <ContentWrapper>
           <Navbar />
           <div className="container">
-            <h2 className="mt-2 heading text bold">Trending Movies</h2>
+            <h2 className="mt-2 heading">Trending Movies</h2>
             {data?.results?.length > 0 ? (
               <>
                 <InfiniteScroll

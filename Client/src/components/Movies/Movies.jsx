@@ -27,11 +27,19 @@ const Movies = ({
       </div>
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={5}
         spaceBetween={0}
         navigation={true}
         modules={[Navigation]}
         className="movie-list"
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {data?.map((item, index) => {
           if (item.backdrop_path) {

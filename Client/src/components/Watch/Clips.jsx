@@ -13,15 +13,20 @@ const Clips = ({ clips }) => {
   const [videoId, setVideoId] = useState(null);
 
   return clips ? (
-    <div className="clips">
-      <h2>Related Clips & Videos</h2>
+    <>
+      <h2 className="starring">Related Clips & Videos</h2>
 
       <Swiper
-        slidesPerView={2}
-        spaceBetween={10}
+        slidesPerView={1}
+        spaceBetween={0}
         navigation={true}
         modules={[Navigation]}
         className="clips-list"
+        breakpoints={{
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {clips?.map((video, index) => (
           <SwiperSlide
@@ -30,14 +35,13 @@ const Clips = ({ clips }) => {
               setVideoId(video.key);
               setShow(true);
             }}
-            className="clips-swiper-slide"
           >
             <div className="thumbnail">
               <img
                 src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
                 className={"img"}
               />
-              <PlayCircle className="icon" />
+              <PlayCircle />
             </div>
           </SwiperSlide>
         ))}
@@ -49,7 +53,7 @@ const Clips = ({ clips }) => {
         videoId={videoId}
         setVideoId={setVideoId}
       />
-    </div>
+    </>
   ) : null;
 };
 

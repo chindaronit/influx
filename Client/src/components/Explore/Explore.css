@@ -57,10 +57,12 @@
   box-sizing: border-box;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 0 !important;
+  padding: 0 !important;
 
   .slide {
     margin-right: 1rem !important;
-    margin-bottom: 2rem !important;
+    margin-bottom: 4rem !important;
   }
 }
 
@@ -83,23 +85,36 @@
     padding: 0.5rem;
     margin: 0.5rem 0;
   }
+
   .heading {
     font-size: medium;
     margin-left: 1rem;
     margin-bottom: 1rem;
   }
+
   .wrapper {
     margin: 0;
     padding: 0;
     .slide {
-      margin-right: 0.5rem !important;
-      width: 8rem;
+      margin-right: 1rem !important;
+      margin-bottom: 4rem !important;
+      width: 8.5rem;
       height: 16rem;
-      img {
-        width: 8rem;
-        height: 12rem;
+      .img {
+        width: 8.5rem;
+        height: 13rem;
       }
-      margin-bottom: 1rem !important;
+      .title {
+        font-size: 12px;
+      }
+      .release-date {
+        font-size: 10px;
+      }
+      .btn-container {
+        visibility: visible;
+        left: 4%;
+        bottom: 20%;
+      }
     }
   }
 }

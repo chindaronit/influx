@@ -93,4 +93,10 @@
   .watchlist-alert .text {
     font-size: smaller !important;
   }
+
+  .content-heading {
+    h1 {
+      font-size: 24px !important;
+    }
+  }
 }

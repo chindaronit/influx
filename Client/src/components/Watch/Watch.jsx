@@ -37,38 +37,40 @@ const Watch = ({
 
   return src && poster ? (
     <div className="container">
-      <Banner
+      {/* <Banner
         src={src}
         item={item}
         video={video?.[0]}
         handleAlert={handleAlert}
         setText={setText}
         endpoint={endpoint}
-      />
+      /> */}
       {<RelatedInfo item={item} crew={crew} poster={poster} />}
       <Cast cast={cast} />
       {video?.length > 0 && <Clips clips={video} />}
 
-      {similar?.length > 0 && (
-        <Movies
-          sectionName={"similar"}
-          sectionMedia={endpoint}
-          endpoint={endpoint}
-          data={similar}
-          handleAlert={handleAlert}
-          setText={setText}
-        />
-      )}
-      {recommended?.length > 0 && (
-        <Movies
-          sectionName={"recommended"}
-          sectionMedia={endpoint}
-          endpoint={endpoint}
-          data={recommended}
-          handleAlert={handleAlert}
-          setText={setText}
-        />
-      )}
+      <div className="watch-content">
+        {similar?.length > 0 && (
+          <Movies
+            sectionName={"similar"}
+            sectionMedia={endpoint}
+            endpoint={endpoint}
+            data={similar}
+            handleAlert={handleAlert}
+            setText={setText}
+          />
+        )}
+        {recommended?.length > 0 && (
+          <Movies
+            sectionName={"recommended"}
+            sectionMedia={endpoint}
+            endpoint={endpoint}
+            data={recommended}
+            handleAlert={handleAlert}
+            setText={setText}
+          />
+        )}
+      </div>
     </div>
   ) : null;
 };
