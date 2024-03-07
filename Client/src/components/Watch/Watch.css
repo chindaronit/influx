@@ -18,7 +18,6 @@
     height: 100%;
     border-radius: 0.5rem;
     box-sizing: border-box;
-    opacity: 0.5 !important;
   }
 
   .cover {
@@ -53,15 +52,6 @@
     z-index: 1;
   }
 
-  .info {
-    margin-bottom: 1rem;
-  }
-
-  .info h3 {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-  }
-
   .movie-info {
     position: absolute;
     bottom: 5%;
@@ -71,57 +61,63 @@
 
     .title {
       text-align: center;
-      font-weight: 36px;
+      font-size: 36px;
       font-weight: 900;
-      opacity: 0.95;
+      opacity: 0.9;
     }
 
     .subtitle {
       text-align: center;
       color: #1976d2;
-      opacity: 0.85;
+      opacity: 0.8;
     }
 
     .overview {
       margin: 1rem 0;
-      opacity: 0.85;
+
+      opacity: 0.65;
     }
   }
 
   .watch-btn-container {
     display: flex;
+    align-items: center;
   }
 
   .watch-btn {
     font-size: 24px;
     margin-right: 1rem;
-    padding: 0 5rem;
+    padding: 1rem 5rem;
   }
 
-  .side-btn .btn {
-    color: #1976d2;
-    min-width: 4rem;
-    min-height: 4rem;
-    border-radius: 50%;
-    padding: 0.5rem;
-    background-color: rgba(255, 255, 255);
-  }
+  .side-btn {
+    position: relative;
+    .btn {
+      color: #1976d2;
+      min-width: 4rem;
+      min-height: 4rem;
+      border-radius: 50%;
+      padding: 0.5rem;
+      background-color: rgba(255, 255, 255);
+    }
 
-  .side-btn .play-btn {
-    color: #1976d2;
-    min-width: 4rem;
-    min-height: 4rem;
-    border-radius: 50%;
-  }
+    .play-btn {
+      color: #1976d2;
+      min-width: 4rem;
+      min-height: 4rem;
+      border-radius: 50%;
+    }
 
-  .hover {
-    position: absolute;
-    background-color: white;
-    color: #1976d2;
-    padding: 1rem;
-    top: -65%;
-    border-radius: 0.5rem;
-    visibility: hidden;
+    .hover {
+      position: absolute;
+      background-color: white;
+      color: #1976d2;
+      padding: 1rem;
+      z-index: 1;
+      bottom: 100%;
+      border-radius: 0.5rem;
+      visibility: hidden;
+    }
   }
 
   .side-btn:hover {
@@ -291,15 +287,91 @@
 
 @media only screen and (max-width: 600px) {
   .genre {
-    display: flex;
+    margin-bottom: 1rem;
     h3 {
-      font-size: small !important;
-      margin-right: 0.25rem;
+      font-size: 12px !important;
+      margin: 0 !important;
+      margin-right: 0.25rem !important;
     }
   }
 
   .watch-btn-container {
-    display: block;
+    position: static;
+  }
+
+  .watch {
+    .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+      padding: 4px;
+    }
+    .watch-btn {
+      margin-right: 0rem;
+      padding: 0;
+    }
+    .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      padding: 0 3rem;
+      font-size: small;
+      margin-right: 0.5rem;
+    }
+
+    .side-btn .btn {
+      min-width: 1rem;
+      min-height: 1rem;
+      padding: 0.25rem;
+    }
+
+    .side-btn .play-btn {
+      min-width: 1rem;
+      min-height: 1rem;
+    }
+
+    .hover {
+      padding: 1rem;
+      top: -65%;
+      border-radius: 0.5rem;
+      visibility: hidden;
+    }
+
+    .side-btn:hover {
+      .hover {
+        visibility: hidden;
+      }
+    }
+
+    .movie-info {
+      z-index: 0;
+      position: static;
+      max-width: 100%;
+      margin: 1rem 3rem;
+
+      .cover {
+        display: none;
+      }
+
+      .title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 900;
+        opacity: 1;
+        margin-bottom: 0.25rem;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #1976d2;
+        opacity: 1;
+        font-size: 12px;
+      }
+
+      .overview {
+        margin: 1rem 0;
+        opacity: 0.75;
+        font-weight: 200;
+        font-size: 11px;
+      }
+    }
+    &::before {
+      display: none !important;
+    }
   }
 
   .watch-content {
@@ -324,6 +396,9 @@
   }
 
   .related-info {
+    h2 {
+      font-size: medium;
+    }
     margin: 1.75rem 1rem;
     display: block;
 
@@ -403,10 +478,6 @@
     }
   }
 
-  .swiper-wrapper {
-    width: 100%;
-  }
-
   .clips-list {
     .thumbnail {
       position: relative;
@@ -415,10 +486,275 @@
         width: 18rem;
         border-radius: 0.25rem;
       }
-      svg {
-        color: #1976d2;
-        width: 25px;
-        height: 25px;
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  .watch {
+    .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+      padding: 0px !important;
+    }
+    .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      height: 2.5rem;
+      font-size: smaller;
+      margin-right: 0.25rem;
+    }
+    .genre {
+      h3 {
+        font-size: small;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .cover {
+      margin-bottom: 0.5rem;
+    }
+
+    .cover img {
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 1px solid white;
+    }
+
+    .movie-info {
+      .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: small;
+      }
+
+      .overview {
+        font-size: smaller;
+      }
+    }
+    .side-btn {
+      margin-left: 0.5rem;
+    }
+
+    .side-btn .btn {
+      min-width: 2rem;
+      min-height: 2rem;
+      padding: 0.5rem;
+    }
+
+    .side-btn .play-btn {
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+
+    .hover {
+      padding: 0.5rem !important;
+      font-size: smaller;
+      visibility: visible;
+    }
+  }
+  .cast-list {
+    padding: 1rem;
+
+    .cast-item .profile {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+  }
+
+  .clips-list {
+    .thumbnail {
+      img {
+        width: 12rem;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+
+  .name {
+    opacity: 0.75;
+    margin-bottom: 0.15rem;
+    font-size: small;
+  }
+
+  .character {
+    color: #1976d2;
+    font-size: small;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1499px) {
+  .watch {
+    .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+      padding: 0px !important;
+    }
+    .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      height: 2.5rem;
+      font-size: smaller;
+      margin-right: 0.25rem;
+    }
+    .genre {
+      h3 {
+        font-size: small;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .cover {
+      margin-bottom: 0.5rem;
+    }
+
+    .cover img {
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 1px solid white;
+    }
+
+    .movie-info {
+      .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: small;
+      }
+
+      .overview {
+        font-size: smaller;
+      }
+    }
+    .side-btn {
+      margin-left: 0.5rem;
+    }
+
+    .side-btn .btn {
+      min-width: 2rem;
+      min-height: 2rem;
+      padding: 0.5rem;
+    }
+
+    .side-btn .play-btn {
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+
+    .hover {
+      padding: 0.5rem !important;
+      font-size: smaller;
+      visibility: visible;
+    }
+  }
+  .cast-list {
+    padding: 1rem;
+
+    .cast-item .profile {
+      width: 6.5rem;
+      height: 6.5rem;
+    }
+  }
+  .clips-list {
+    .thumbnail {
+      img {
+        width: 15rem;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+  .name {
+    opacity: 0.75;
+    margin-bottom: 0.15rem;
+    font-size: small;
+  }
+
+  .character {
+    color: #1976d2;
+    font-size: small;
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1919px) {
+  .watch {
+    .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+      padding: 0px !important;
+    }
+    .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      height: 2.5rem;
+      font-size: smaller;
+      margin-right: 0.25rem;
+    }
+    .genre {
+      h3 {
+        font-size: small;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    .cover {
+      margin-bottom: 0.5rem;
+    }
+
+    .cover img {
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 1px solid white;
+    }
+
+    .movie-info {
+      .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: small;
+      }
+
+      .overview {
+        font-size: medium;
+      }
+    }
+    .side-btn {
+      margin-left: 0.5rem;
+    }
+
+    .side-btn .btn {
+      min-width: 2rem;
+      min-height: 2rem;
+      padding: 0.5rem;
+    }
+
+    .side-btn .play-btn {
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+
+    .hover {
+      padding: 1rem !important;
+      font-size: small;
+      visibility: visible;
+    }
+  }
+  .cast-list {
+    padding: 1rem;
+
+    .cast-item .profile {
+      width: 8rem;
+      height: 8rem;
+    }
+  }
+  .clips-list {
+    .thumbnail {
+      position: relative;
+
+      img {
+        width: 18rem;
+        border-radius: 0.25rem;
       }
     }
   }

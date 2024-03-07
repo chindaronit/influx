@@ -10,8 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { PORT } from "../../utils/config";
 import StarIcon from "@mui/icons-material/Star";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { Link } from "react-router-dom";
 
-const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
+const Banner = ({ video, item, src, handleAlert, setText, endpoint, id }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
   const navigate = useNavigate();
@@ -48,6 +49,68 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
     }
   };
 
+  const handleLikedClick = async () => {
+    if (!user || !token || !user?.email) {
+      setText("Login first!");
+      handleAlert();
+    } else {
+      try {
+        const res = await fetch(`${PORT}/liked/api`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: user.email,
+            id: item.id,
+            media_type: endpoint,
+          }),
+        });
+
+        if (res.status === 200) {
+          setText("Added to Liked");
+          handleAlert();
+        } else if (res.status === 401) {
+          navigate("/signin");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleFavouriteClick = async () => {
+    if (!user || !token || !user?.email) {
+      setText("Login first!");
+      handleAlert();
+    } else {
+      try {
+        const res = await fetch(`${PORT}/favourite/api`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: user.email,
+            id: item.id,
+            media_type: endpoint,
+          }),
+        });
+
+        if (res.status === 200) {
+          setText("Added to Favourites");
+          handleAlert();
+        } else if (res.status === 401) {
+          navigate("/signin");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div className="watch">
       <Img src={src} alt={item.title || item.name} className={"img"} />
@@ -73,10 +136,13 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
             );
           })}
         </div>
+
         <div className="watch-btn-container">
-          <Button variant="contained" className="watch-btn">
-            WATCH
-          </Button>
+          <Link to={`/stream/${endpoint}/${id}`}>
+            <Button variant="contained" className="watch-btn">
+              WATCH
+            </Button>
+          </Link>
           <div className="side-btn">
             <IconButton onClick={handleClick}>
               <AddIcon className="btn" />
@@ -101,8 +167,7 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
           <div className="side-btn">
             <IconButton
               onClick={() => {
-                setShow(true);
-                setVideoId(video.key);
+                handleFavouriteClick();
               }}
             >
               <StarIcon className="play-btn" />
@@ -114,8 +179,7 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint }) => {
           <div className="side-btn">
             <IconButton
               onClick={() => {
-                setShow(true);
-                setVideoId(video.key);
+                handleLikedClick();
               }}
             >
               <ThumbUpIcon className="play-btn" />

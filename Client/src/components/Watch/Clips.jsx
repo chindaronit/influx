@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import "./Video.css";
 
 const Clips = ({ clips }) => {
   const [show, setShow] = useState(null);
@@ -37,7 +38,7 @@ const Clips = ({ clips }) => {
             }}
           >
             <div className="thumbnail">
-              <img
+              <Img
                 src={`https://img.youtube.com/vi/${video.key}/mqdefault.jpg`}
                 className={"img"}
               />

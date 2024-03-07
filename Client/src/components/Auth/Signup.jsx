@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import {PORT} from "../../utils/config";
+import { PORT } from "../../utils/config";
+import "./Auth.css";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -108,9 +109,9 @@ const Signup = () => {
           <hr />
           <h5 className="highlight mt-2">
             Already have an account?{" "}
-            <span style={{ fontSize: "18px" }}>
-              <Link to="/signin">Login</Link>
-            </span>
+            <Link to="/signin">
+              <span className="blue">Login</span>
+            </Link>
           </h5>
         </form>
       </div>

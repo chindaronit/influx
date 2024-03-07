@@ -4,10 +4,12 @@
   border-radius: 50%;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.profile-bar {
+  .profile-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .edit-icon {
@@ -142,6 +144,52 @@
   .profile-item {
     margin: 0.75rem 1.5rem;
     font-size: smaller;
+  }
+
+  .explore {
+    font-size: small;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1699px) {
+  .user-icon {
+    font-size: 95px !important;
+  }
+
+  .profile-bar {
+    margin: 0 1rem;
+    font-size: smaller !important;
+  }
+
+  .profile-details {
+    margin: 1rem 0;
+    box-sizing: border-box;
+
+    .fieldset {
+      width: 45%;
+      margin: 0.5rem;
+
+      input {
+        padding: 0.15rem 0.5rem;
+        padding-bottom: 1rem;
+        font-size: smaller;
+      }
+    }
+
+    .legend {
+      font-size: medium;
+    }
+  }
+
+  .profile-text {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile-item {
+    margin: 0.75rem 1.5rem;
+    font-size: smaller;
+    padding: 0.75rem;
   }
 
   .explore {

@@ -9,6 +9,7 @@ import Navbar from "../Navbar/Navbar";
 import ContentWrapper from "../ContentWrapper/ContentWrapper";
 import Footer from "../Footer/Footer";
 import { CircularProgress } from "@mui/material";
+import "./Subscription.css";
 
 const Subscription = ({ handleAlert, setText }) => {
   const navigate = useNavigate();

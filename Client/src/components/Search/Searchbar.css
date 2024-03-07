@@ -1,0 +1,180 @@
+/* Search Component */
+
+.search-bar {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+  position: relative;
+
+  .searchInputs {
+    position: relative;
+    width: 100%;
+  }
+
+  .searchInputs .text {
+    border-radius: 0.5rem;
+    padding: 1rem 5rem;
+    height: 4rem;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .searchInputs .text::placeholder {
+    text-indent: 10px;
+  }
+
+  .searchIcon {
+    .icon {
+      color: #393939;
+      font-size: 50px;
+    }
+
+    position: absolute;
+    top: 12.5%;
+    left: 1%;
+  }
+
+  .dataResult {
+    position: absolute;
+    top: 85%;
+    left: 5%;
+    width: 90%;
+    height: 16rem;
+    background-color: white;
+    color: #121212;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  .dataResult::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dataResult .result-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    color: #121212;
+  }
+
+  .dataResult .result-div:hover {
+    background-color: #1212120f;
+  }
+
+  .dataResult .item {
+    padding: 0rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .dataResult .item h4 {
+    text-align: center;
+  }
+}
+
+.search-card {
+  cursor: pointer;
+  min-height: 15rem;
+  min-width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.search-card h3 {
+  margin: 0;
+}
+
+.content {
+  overflow: hidden !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-bar {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+
+    .searchInputs .text {
+      border-radius: 0.5rem;
+      padding: 1rem 3rem;
+      height: 3rem;
+      font-size: 16px;
+    }
+
+    .searchInputs .text::placeholder {
+      text-indent: 0px;
+    }
+
+    .searchIcon {
+      top: 15%;
+      left: 2%;
+      .icon {
+        font-size: 35px;
+      }
+    }
+
+    .dataResult {
+      top: 85%;
+      left: 5%;
+      width: 90%;
+      height: 16rem;
+    }
+
+    .dataResult .result-div {
+      padding: 0.5rem 0.75rem;
+      h3 {
+        font-size: smaller !important;
+        font-weight: 200 !important;
+      }
+    }
+
+    .dataResult .item {
+      padding: 0rem 1rem;
+      h4 {
+        font-size: smaller !important;
+        font-weight: 200;
+      }
+    }
+  }
+
+  .search-card {
+    min-height: 6rem;
+    min-width: 6rem;
+    margin: 0.25rem;
+
+    h2 {
+      font-size: smaller !important;
+    }
+  }
+
+  .genre-heading {
+    font-size: medium;
+    margin-left: 1rem !important;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1499px) {
+  .search-card {
+    min-height: 10rem;
+    min-width: 10rem;
+    margin: 0.75rem;
+
+    h2 {
+      font-size: medium !important;
+    }
+  }
+
+  .genre-heading {
+    font-size: large;
+    margin-left: 1.5rem !important;
+  }
+}

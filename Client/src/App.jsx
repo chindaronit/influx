@@ -18,10 +18,10 @@ import Popular from "./components/Filters/Popular";
 import PopularTv from "./components/Filters/PopularTv";
 import NowPlaying from "./components/Filters/NowPlaying";
 import AiringTodayTv from "./components/Filters/AiringTodayTv";
-import LoadWatchlist from "./components/Specifics/LoadWatchlist";
-import LoadFavourite from "./components/Specifics/LoadFavourite";
-import LoadLiked from "./components/Specifics/LoadLiked";
-import LoadHistory from "./components/Specifics/LoadHistory";
+import LoadWatchlist from "./components/Specifics/Watchlist/LoadWatchlist";
+import LoadFavourite from "./components/Specifics/Favourite/LoadFavourite";
+import LoadLiked from "./components/Specifics/Liked/LoadLiked";
+import LoadHistory from "./components/Specifics/History/LoadHistory";
 import Signup from "./components/Auth/Signup";
 import Signin from "./components/Auth/Signin";
 import { getTokenFromCookie } from "./features/auth/authSlice";
@@ -29,6 +29,7 @@ import FetchApiConfig from "./functions/FetchApiConfig";
 import FetchApiGenres from "./functions/FetchApiGenres";
 import PageNotFound from "./components/404/PageNotFound";
 import Profile from "./components/Profile/Profile";
+import Stream from "./components/Stream/Stream";
 import "./App.css";
 
 function App() {
@@ -96,9 +97,7 @@ function App() {
         />
         <Route
           path="/liked"
-          element={
-            <LoadLiked handleAlert={handleAlert} setText={setText} />
-          }
+          element={<LoadLiked handleAlert={handleAlert} setText={setText} />}
         />
         <Route
           path="/favourite"
@@ -108,9 +107,7 @@ function App() {
         />
         <Route
           path="/history"
-          element={
-            <LoadHistory handleAlert={handleAlert} setText={setText} />
-          }
+          element={<LoadHistory handleAlert={handleAlert} setText={setText} />}
         />
         <Route
           path="/filter"
@@ -161,6 +158,7 @@ function App() {
           path="/section/trending/tv/week"
           element={<TrendingTv handleAlert={handleAlert} setText={setText} />}
         />
+        <Route path="/stream/:media/:id" element={<Stream />} />
 
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

@@ -31,7 +31,7 @@ const SubscriptionCard = ({ item, handleAlert, setText, token, email }) => {
           <h2>{item.plan}</h2>
         </div>
 
-        <div className="d-flex jc-center mb-2">
+        <div className="d-flex jc-center align-center">
           <item.quality className="quality-icon" />
           <h3 className="quality">Quality</h3>
         </div>
@@ -48,9 +48,9 @@ const SubscriptionCard = ({ item, handleAlert, setText, token, email }) => {
           No of Devices - {item.devices}
         </h3>
 
-        <ul className="d-flex jc-center mb-2">
+        <ul className="d-flex jc-center mb-2 align-center f-wrap">
           {item?.icons.map((icon, iconIndex) => (
-            <li className="icon" key={iconIndex}>
+            <li className="devices-icon" key={iconIndex}>
               {React.cloneElement(icon, {
                 style: { fontSize: "50px" },
               })}
@@ -59,14 +59,14 @@ const SubscriptionCard = ({ item, handleAlert, setText, token, email }) => {
         </ul>
 
         {plan?.plan === item.plan ? (
-          <h3 className="mb-2">
+          <h3 className="mb-2 plan-status">
             Upgraded On : {dayjs(plan.dateUpgraded).format("MMM D,YYYY")}
           </h3>
         ) : (
           <></>
         )}
 
-        <div className="d-flex jc-between">
+        <div className="d-flex jc-between align-center">
           <h3 style={{ color: item.color }}>{item.price} Monthly</h3>
           {plan?.plan === item.plan ? (
             <h3>

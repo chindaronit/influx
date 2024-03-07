@@ -38,6 +38,7 @@
     display: flex;
     justify-content: center;
     visibility: hidden;
+    align-items: center;
 
     .add-btn {
       position: relative;
@@ -184,6 +185,241 @@
         font-weight: bold !important;
         border-radius: 0.15rem !important;
         padding: 0.25rem !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  :root {
+    --swiper-navigation-size: 20px;
+    --swiper-pagination-bullet-size: 5px;
+  }
+
+  .banner-info-container {
+    max-width: 60vw;
+    bottom: 12%;
+    left: 15%;
+
+    .banner-info-title {
+      font-size: 12px;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    h3 {
+      font-size: 9px;
+      margin-right: 0.25rem;
+    }
+
+    .banner-info-overview {
+      font-size: 10px;
+      margin-bottom: 0.25rem;
+      opacity: 0.75;
+    }
+
+    .banner-btn-container {
+      margin-top: 0.25rem;
+
+      .add-btn {
+        .btn {
+          min-width: 1rem;
+          min-height: 1rem;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+      }
+
+      .watch-btn {
+        min-width: 4rem !important;
+        min-height: 2rem;
+        font-size: 8px !important;
+        font-weight: bold !important;
+        border-radius: 0.15rem !important;
+        padding: 0.25rem !important;
+      }
+
+      .add-to-watchlist {
+        position: absolute;
+        background-color: white;
+        color: #1976d2;
+        padding: 0.75rem !important;
+        bottom: 100%;
+        right: -60%;
+        border-radius: 0.25rem;
+        width: 10rem !important;
+        visibility: hidden;
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1499px) {
+  :root {
+    --swiper-navigation-size: 30px;
+    --swiper-pagination-bullet-size: 5px;
+  }
+
+  .banner-info-container {
+    max-width: 30vw;
+    bottom: 15%;
+    left: 10%;
+
+    .banner-info-title {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin-right: 0.75rem;
+    }
+
+    .banner-info-overview {
+      font-size: 15px;
+      margin-bottom: 0.25rem;
+      opacity: 0.75;
+    }
+
+    .banner-btn-container {
+      margin-top: 0.75rem;
+
+      .add-btn {
+        .btn {
+          min-width: 2.5rem;
+          min-height: 2.5rem;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+      }
+
+      .watch-btn {
+        font-size: 12px !important;
+        font-weight: bold !important;
+      }
+
+      .add-to-watchlist {
+        position: absolute;
+        background-color: white;
+        color: #1976d2;
+        padding: 0.75rem !important;
+        bottom: 100%;
+        right: -60%;
+        border-radius: 0.25rem;
+        width: 10rem !important;
+        visibility: hidden;
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1699px) {
+  :root {
+    --swiper-navigation-size: 35px;
+    --swiper-pagination-bullet-size: 8px;
+  }
+
+  .banner-info-container {
+    max-width: 30vw;
+    bottom: 20%;
+    left: 10%;
+
+    .banner-info-title {
+      font-size: 28px;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-right: 0.75rem;
+    }
+
+    .banner-info-overview {
+      font-size: 18px;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .banner-btn-container {
+      margin-top: 0.75rem;
+
+      .add-btn {
+        .btn {
+          min-width: 3rem;
+          min-height: 3rem;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+      }
+
+      .watch-btn {
+        font-size: 16px !important;
+        font-weight: bold !important;
+      }
+
+      .add-to-watchlist {
+        position: absolute;
+        background-color: white;
+        color: #1976d2;
+        padding: 0.75rem !important;
+        bottom: 100%;
+        right: -60%;
+        border-radius: 0.25rem;
+        width: 10rem !important;
+        visibility: hidden;
+        font-size: 14px !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1700px) and (max-width: 1919px) {
+  :root {
+    --swiper-navigation-size: 40px;
+    --swiper-pagination-bullet-size: 10px;
+  }
+
+  .banner-info-container {
+    max-width: 30vw;
+    bottom: 20%;
+    left: 10%;
+
+    .banner-info-title {
+      font-size: 28px;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-right: 0.75rem;
+    }
+
+    .banner-info-overview {
+      font-size: 18px;
+      margin-bottom: 0.5rem;
+      opacity: 0.75;
+    }
+
+    .banner-btn-container {
+      margin-top: 0.75rem;
+
+      .add-btn {
+        .btn {
+          min-width: 3rem;
+          min-height: 3rem;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+      }
+
+      .watch-btn {
+        font-size: 16px !important;
+        font-weight: bold !important;
       }
     }
   }

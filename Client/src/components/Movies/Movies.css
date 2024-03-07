@@ -243,3 +243,258 @@
     font-size: 0.5rem !important;
   }
 }
+
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+  .slide {
+    width: 13rem;
+    height: 10rem;
+
+    .img {
+      width: 13rem;
+      height: 8rem;
+      border-radius: 0.5rem;
+    }
+
+    .btn-container {
+      left: 4%;
+      bottom: 20%;
+    }
+
+    .title {
+      font-size: 12px;
+      margin: 0;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .release-date {
+      font-size: 10px;
+    }
+
+    .add-btn {
+      .add-icon {
+        min-width: 1rem;
+        min-height: 1rem;
+      }
+      .add-to-watchlist {
+        width: 5rem;
+        bottom: 90%;
+        margin-bottom: 0rem;
+        font-size: 8px;
+      }
+    }
+  }
+
+  .circleRating {
+    bottom: 78%;
+    right: 2%;
+    width: 2rem;
+  }
+
+  .css-jh47zj-MuiButtonBase-root-MuiButton-root {
+    height: 1.5rem !important;
+    font-size: 0.5rem !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1499px) {
+  .row-container {
+    .heading {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      .text {
+        opacity: 0.85;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .show-all {
+        font-size: 12px;
+      }
+    }
+  }
+  .slide {
+    width: 15rem;
+    height: 11rem;
+
+    .img {
+      width: 15rem;
+      height: 9rem;
+      border-radius: 0.5rem;
+    }
+
+    .btn-container {
+      left: 2%;
+      bottom: 18%;
+    }
+
+    .title {
+      font-size: 12px;
+      margin: 0;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .release-date {
+      font-size: 10px;
+    }
+
+    .add-btn {
+      .add-icon {
+        min-width: 1.5rem;
+        min-height: 1.5rem;
+      }
+      .add-to-watchlist {
+        width: 6rem;
+        margin-bottom: 0rem;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .circleRating {
+    bottom: 78%;
+    right: 2%;
+    width: 2rem;
+  }
+
+  .css-jh47zj-MuiButtonBase-root-MuiButton-root {
+    height: 1.8rem !important;
+    font-size: 0.5rem !important;
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1699px) {
+  .row-container {
+    .heading {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      .text {
+        opacity: 0.85;
+        font-size: 22px;
+        font-weight: 500;
+      }
+
+      .show-all {
+        font-size: 14px;
+      }
+    }
+  }
+  .slide {
+    width: 19rem;
+
+    .img {
+      width: 19rem;
+      height: 11rem;
+      border-radius: 0.5rem;
+    }
+
+    .btn-container {
+      left: 4%;
+      bottom: 35%;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 300;
+      margin: 0;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .release-date {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 100;
+    }
+
+    .add-btn {
+      .add-icon {
+        min-width: 1.8rem;
+        min-height: 1.8rem;
+      }
+      .add-to-watchlist {
+        width: 7rem;
+        margin-bottom: 0rem;
+      }
+    }
+  }
+
+  .circleRating {
+    bottom: 87%;
+    right: 2%;
+    width: 2rem;
+  }
+
+  .css-jh47zj-MuiButtonBase-root-MuiButton-root {
+    height: 2rem !important;
+    font-size: 0.65rem !important;
+  }
+}
+
+@media only screen and (min-width: 1700px) and (max-width: 1919px) {
+  .row-container {
+    .heading {
+      margin-right: 2rem;
+      .text {
+        opacity: 0.85;
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      .show-all {
+        font-size: 16px;
+      }
+    }
+  }
+  .slide {
+    width: 22rem;
+
+    .img {
+      width: 22rem;
+      height: 14rem;
+      border-radius: 0.5rem;
+    }
+
+    .btn-container {
+      left: 4%;
+      bottom: 18%;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 300;
+      margin: 0;
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .release-date {
+      font-size: 16px;
+      margin: 0;
+      font-weight: 100;
+    }
+
+    .add-btn {
+      .add-icon {
+        min-width: 1.8rem;
+        min-height: 1.8rem;
+      }
+
+      .add-to-watchlist {
+        margin-bottom: 0rem;
+      }
+    }
+  }
+
+  .circleRating {
+    bottom: 87%;
+    right: 2%;
+    width: 2rem;
+  }
+
+  .css-jh47zj-MuiButtonBase-root-MuiButton-root {
+    height: 2rem !important;
+    font-size: 0.75rem !important;
+  }
+}

@@ -31,7 +31,7 @@ const handleSignin = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      user: { name: user.name, email: user.email },
+      user: { name: user.name, email: user.email, dob:user.dob },
       access_token: access_token,
     });
   } catch (err) {

@@ -7,7 +7,7 @@ const Bar = () => {
   return (
     <div className="container">
       <div className="profile-bar">
-        <div className="logo">
+        <div className="profile-logo">
           <IconButton>
             <img
               src="/src/assets/logo.svg"

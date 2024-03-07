@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { handleSignin } from "../../features/auth/authSlice";
+import "./Auth.css";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -78,9 +79,9 @@ const Signin = () => {
           </div>
 
           <hr className="hr" />
-          <h3 className="highlight">
-            <Link to="/signup">Create Account ?</Link>
-          </h3>
+          <Link to="/signup" className="link">
+            <h3 className="highlight blue">Create Account ?</h3>
+          </Link>
         </form>
       </div>
     </div>

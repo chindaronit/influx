@@ -1,0 +1,187 @@
+/* AUTH component */
+.auth-card {
+  background-color: black;
+  border-radius: 0.5rem;
+  padding: 2.5rem 4rem;
+  box-sizing: border-box;
+  min-width: 30rem;
+  color: rgba(255, 255, 255, 0.842);
+
+  .hr {
+    margin-bottom: 3rem;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .logo img {
+    width: 75px;
+  }
+
+  .input-label {
+    display: block;
+    width: 100%;
+    margin: 1rem 0rem;
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .input-value {
+    width: 100%;
+    background-color: #121212;
+    padding: 1rem;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 2rem;
+    color: white;
+  }
+
+  .input-value::placeholder {
+    text-indent: 10px;
+  }
+
+  .highlight {
+    text-align: end;
+  }
+
+  .highlight a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.74);
+  }
+
+  .highlight a:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .btn {
+    font-size: large;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .auth-card {
+    border-radius: 0.5rem;
+    padding: 3rem 3rem;
+    min-width: 22rem;
+
+    .hr {
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 75px;
+    }
+
+    .input-label {
+      font-size: large;
+    }
+
+    .input-value {
+      font-size: medium;
+    }
+
+    .btn {
+      font-size: medium;
+    }
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1499px) {
+  .auth-card {
+    border-radius: 0.25rem;
+    padding: 1.25rem 2.5rem;
+    min-width: 23rem;
+
+    h2 {
+      font-size: 15px;
+    }
+
+    .hr {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo img {
+      width: 56px;
+    }
+
+    .logo h1 {
+      margin-left: 0.5rem;
+      font-size: 20px;
+    }
+
+    .input-label {
+      font-size: small;
+      margin-bottom: 0.25rem;
+    }
+
+    .input-value {
+      padding: 0.75rem;
+      font-size: 11px;
+      margin-bottom: 0.25rem;
+    }
+
+    .btn {
+      margin-top: 0.5rem;
+      font-size: 10px;
+      margin-bottom: 0rem;
+    }
+
+    .mb-2 {
+      margin-bottom: 1rem;
+    }
+    .mt-2 {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1919px) {
+  .auth-card {
+    border-radius: 0.5rem;
+    padding: 1.75rem 3rem;
+    min-width: 25rem;
+
+    .hr {
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      margin-bottom: 2rem;
+    }
+
+    .logo img {
+      width: 64px;
+    }
+
+    .logo h1 {
+      flex: 1;
+      margin-left: 0.5rem;
+      font-size: 24px;
+    }
+
+    .input-label {
+      font-size: medium;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-value {
+      font-size: small;
+    }
+
+    .btn {
+      font-size: small;
+    }
+  }
+}

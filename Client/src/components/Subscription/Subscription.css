@@ -1,0 +1,126 @@
+/* Subscription Card */
+.plan-heading {
+  box-sizing: border-box;
+  padding: 2rem 1rem;
+  margin: 0.5rem 1rem;
+  width: 20%;
+  font-weight: bolder;
+  background-color: black;
+  color: #1976d2;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.subscription-card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 0 4rem;
+  padding: 2rem;
+}
+
+.subscription-card {
+  position: relative;
+  background-color: black;
+  padding: 2rem;
+  margin: 0 1rem 1rem 1rem;
+  width: 25rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+
+  .plan-name {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+  }
+
+  .plan-name h2 {
+    text-align: center;
+  }
+
+  .quality-icon {
+    font-size: 40px;
+    margin-top: 0.5rem;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+
+  .quality {
+    margin: auto 0;
+  }
+}
+
+.subscription-card ul {
+  list-style: none;
+  padding: 0;
+
+  .icon {
+    font-size: 50px;
+    margin: 0.5rem;
+  }
+}
+
+.subscription-card ul .benefits {
+  margin: 1rem 0;
+  text-align: center;
+  content: "✓ ";
+}
+
+.subscription-card ul .benefits::before {
+  content: "✓ ";
+}
+
+@media only screen and (max-width: 600px) {
+  .subscription-card-container {
+    margin: 0 1rem;
+    padding: 0rem;
+  }
+  .subscription-card {
+    padding: 1.25rem;
+    margin: 0 0rem 2rem 0rem;
+    width: 20rem;
+    border-radius: 0.25rem;
+
+    .plan-name {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .quality-icon {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .benefits {
+      margin: 0.5rem 0 !important;
+    }
+
+    .btn {
+      font-size: 14px;
+    }
+
+    .quality {
+      margin: auto 0;
+      margin-bottom: 1rem;
+    }
+
+    .plan-status {
+      font-size: 16px !important;
+    }
+
+    .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      font-weight: 300;
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .devices-icon {
+      svg {
+        font-size: 2.5rem !important;
+      }
+    }
+  }
+}

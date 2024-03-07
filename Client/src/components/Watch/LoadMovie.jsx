@@ -56,6 +56,7 @@ const LoadMovie = ({ handleAlert, setText }) => {
             recommended={recommended?.results}
             endpoint={media}
             handleAlert={handleAlert}
+            id={id}
             setText={setText}
           />
           <Footer />

@@ -17,6 +17,7 @@ const Watch = ({
   endpoint,
   handleAlert,
   setText,
+  id,
 }) => {
   const [src, setSrc] = useState(null);
   const { url } = useSelector((state) => state.homePage);
@@ -37,14 +38,15 @@ const Watch = ({
 
   return src && poster ? (
     <div className="container">
-      {/* <Banner
+      <Banner
         src={src}
         item={item}
         video={video?.[0]}
         handleAlert={handleAlert}
         setText={setText}
         endpoint={endpoint}
-      /> */}
+        id={id}
+      />
       {<RelatedInfo item={item} crew={crew} poster={poster} />}
       <Cast cast={cast} />
       {video?.length > 0 && <Clips clips={video} />}
