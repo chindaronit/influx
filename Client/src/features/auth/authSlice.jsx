@@ -14,7 +14,6 @@ export const handleSignin = createAsyncThunk(
   "/signin",
   async ({ email, password }, thunkAPI) => {
     try {
-      console.log(PORT);
       const res = await axios.post(
         `${PORT}/user/signin/`,
         {

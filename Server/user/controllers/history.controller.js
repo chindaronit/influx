@@ -15,7 +15,7 @@ const addItem = async (req, res) => {
   const { email, id, media_type } = req.body;
 
   try {
-    const item = await historyModel.findOne({ email, id }).exec();
+    const item = await historyModel.findOne({ email, media_type, id }).exec();
     if (!item) {
       const newItem = new historyModel({ email, id, media_type });
       await newItem.save();

@@ -40,7 +40,15 @@ const Rating = ({ token, media_type, id, user, season, episode }) => {
     const commentValue = comment.trim();
     try {
       const res = await dispatch(
-        addComment({ user, media_type, id, comment: commentValue, token })
+        addComment({
+          user,
+          media_type,
+          id,
+          comment: commentValue,
+          token,
+          season,
+          episode,
+        })
       );
       setComment("");
       setContentHeight(2);

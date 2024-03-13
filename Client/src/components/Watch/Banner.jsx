@@ -12,7 +12,16 @@ import StarIcon from "@mui/icons-material/Star";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { Link } from "react-router-dom";
 
-const Banner = ({ video, item, src, handleAlert, setText, endpoint, id }) => {
+const Banner = ({
+  video,
+  item,
+  src,
+  handleAlert,
+  setText,
+  endpoint,
+  id,
+  totalSeasons,
+}) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
   const navigate = useNavigate();
@@ -140,7 +149,7 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint, id }) => {
           <Link
             to={
               endpoint === "tv"
-                ? `/stream/${endpoint}/${id}/1/1`
+                ? `/stream/${endpoint}/${id}/${totalSeasons}/1/1`
                 : `/stream/${endpoint}/${id}`
             }
           >

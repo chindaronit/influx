@@ -55,6 +55,7 @@ const Watch = ({
   return src && poster ? (
     <div className="container">
       <Banner
+        totalSeasons={ parseInt(item.number_of_seasons)}
         src={src}
         item={item}
         video={video?.[0]}

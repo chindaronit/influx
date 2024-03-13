@@ -7,9 +7,10 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import GetContent from "./GetContent";
 import { getPlan } from "../../features/subscription/Subscription";
+import { addToHistory } from "../../features/Specifics/historySlice";
 
-const Stream = ({ handleAlert, setText }) => {
-  const { media, id, season, episode } = useParams();
+const StreamMovie = () => {
+  const { media, id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,8 +28,14 @@ const Stream = ({ handleAlert, setText }) => {
     if (!loading) {
       if (success) {
         dispatch(getPlan({ email: user?.email, token: token }));
+        dispatch(getComments({ media_type: media, id, token }));
         dispatch(
-          getComments({ media_type: media, id, token, season, episode })
+          addToHistory({
+            media_type: media,
+            id,
+            token,
+            email: user?.email,
+          })
         );
       } else {
         timeoutId = setTimeout(handleTimeout, 5000);
@@ -53,15 +60,11 @@ const Stream = ({ handleAlert, setText }) => {
       <GetContent
         media_type={media}
         id={id}
-        season={season}
-        episode={episode}
         token={token}
         user={user}
-        setText={setText}
-        handleAlert={handleAlert}
       />
     )
   );
 };
 
-export default Stream;
+export default StreamMovie;

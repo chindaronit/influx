@@ -45,14 +45,16 @@ const Seasons = ({ totalSeasons, id, src }) => {
 
   return (
     !loading && (
-      <div className="season-select">
-        <select name="seasons" id="seasons" onChange={handleSelect}>
-          {seasons.map((season, index) => (
-            <option value={season} key={index}>
-              Season {season}
-            </option>
-          ))}
-        </select>
+      <>
+        <div className="season-select">
+          <select name="seasons" id="seasons" onChange={handleSelect}>
+            {seasons.map((season, index) => (
+              <option value={season} key={index}>
+                Season {season}
+              </option>
+            ))}
+          </select>
+        </div>
         <Swiper
           slidesPerView={5}
           spaceBetween={0}
@@ -71,12 +73,17 @@ const Seasons = ({ totalSeasons, id, src }) => {
           {data?.map((episode, index) => {
             return (
               <SwiperSlide key={index}>
-                <SeasonSlide episode={episode} src={src} />
+                <Link
+                  to={`/stream/tv/${id}/${totalSeasons}/${season}/${episode.episode_number}`}
+                  className="link"
+                >
+                  <SeasonSlide episode={episode} src={src} />
+                </Link>
               </SwiperSlide>
             );
           })}
         </Swiper>
-      </div>
+      </>
     )
   );
 };

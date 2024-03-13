@@ -49,6 +49,30 @@ export const getHistoryMovies = createAsyncThunk(
   }
 );
 
+export const addToHistory = createAsyncThunk(
+  "/history",
+  async ({ email, token, media_type, id }, thunkAPI) => {
+    try {
+     
+      const res = await fetch(`${PORT}/history/api`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          email,
+          id,
+          media_type,
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue("something went wrong...");
+    }
+  }
+);
+
 const historySlice = createSlice({
   name: "history",
   initialState,

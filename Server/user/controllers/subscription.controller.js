@@ -5,7 +5,18 @@ const getSubscription = async (req, res) => {
   const email = req.query.email;
   try {
     const data = await subscriptionModel.find({ email }).exec();
-    res.status(200).json(data);
+
+    if (data && data[0]?.dateUpgraded) {
+      var diff = new Date() - data[0].dateUpgraded;
+      const oneMonthInMilliseconds = 30 * 24 * 60 * 60 * 1000;
+
+      if (diff > oneMonthInMilliseconds) {
+        await subscriptionModel.findOneAndDelete({ email }).exec();
+        return res.status(200).json([]);
+      }
+    }
+
+    return res.status(200).json(data);
   } catch (error) {
     res.status(500).json({
       success: false,

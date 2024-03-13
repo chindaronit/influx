@@ -29,7 +29,8 @@ import FetchApiConfig from "./functions/FetchApiConfig";
 import FetchApiGenres from "./functions/FetchApiGenres";
 import PageNotFound from "./components/404/PageNotFound";
 import Profile from "./components/Profile/Profile";
-import Stream from "./components/Stream/Stream";
+import StreamTv from "./components/Stream/StreamTv";
+import StreamMovie from "./components/Stream/StreamMovie";
 import "./App.css";
 
 function App() {
@@ -172,9 +173,11 @@ function App() {
           element={<TrendingTv handleAlert={handleAlert} setText={setText} />}
         />
 
+        <Route path="/stream/:media/:id/" element={<StreamMovie />} />
+
         <Route
-          path="/stream/:media/:id/:season/:episode"
-          element={<Stream handleAlert={handleAlert} setText={setText} />}
+          path="/stream/:media/:id/:seasonCount/:season/:episode"
+          element={<StreamTv />}
         />
 
         <Route path="/signin" element={<Signin />} />

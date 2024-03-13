@@ -34,7 +34,10 @@ export const getComments = createAsyncThunk(
 
 export const addComment = createAsyncThunk(
   "/addComment",
-  async ({ user, media_type, id, comment, token }, thunkAPI) => {
+  async (
+    { user, media_type, id, comment, token, season, episode },
+    thunkAPI
+  ) => {
     try {
       const res = await axios.post(
         url,
@@ -44,6 +47,8 @@ export const addComment = createAsyncThunk(
           media_type,
           id,
           comment,
+          season,
+          episode,
         },
         {
           headers: {
