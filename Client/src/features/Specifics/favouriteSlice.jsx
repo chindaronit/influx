@@ -78,5 +78,5 @@ const favouriteSlice = createSlice({
   },
 });
 
-export const { addMovie, addMovieList, removeMovie } = favouriteSlice.actions;
+export const { removeMovie } = favouriteSlice.actions;
 export default favouriteSlice.reducer;

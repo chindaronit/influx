@@ -38,14 +38,13 @@ const Genre = ({ handleAlert, setText }) => {
           <Navbar />
           <div className="container">
             {data?.results?.length > 0 ? (
-              <>
+              <div className="mt-2">
                 <InfiniteScroll
                   className="content"
                   dataLength={data?.results?.length || []}
                   next={() => {
                     if (pageNum) {
                       FetchQueryNextPageData(data, setData, setPageNum, url);
-                      url = `/discover/movie?with_genres=${parseInt(genre)}?page=${pageNum}`;
                     }
                   }}
                   hasMore={pageNum <= data?.total_pages}
@@ -55,19 +54,18 @@ const Genre = ({ handleAlert, setText }) => {
                     {data?.results.map((item, index) => {
                       if (item.media_type === "person") return;
                       return (
-                        <div className="item" key={index}>
-                          <Slide
-                            data={item}
-                            endpoint={"movie"}
-                            handleAlert={handleAlert}
-                            setText={setText}
-                          />
-                        </div>
+                        <Slide
+                          data={item}
+                          endpoint={"movie"}
+                          handleAlert={handleAlert}
+                          setText={setText}
+                          key={index}
+                        />
                       );
                     })}
                   </div>
                 </InfiniteScroll>
-              </>
+              </div>
             ) : (
               <span className="resultNotFound">Sorry, Results not found!</span>
             )}

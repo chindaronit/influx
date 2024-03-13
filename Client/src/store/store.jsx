@@ -6,7 +6,7 @@ import favouriteSlice from "../features/Specifics/favouriteSlice";
 import historySlice from "../features/Specifics/historySlice";
 import Subscription from "../features/subscription/Subscription";
 import authSlice from "../features/auth/authSlice";
-
+import commentSlice from "../features/Comments/commentSlice";
 
 export const store = configureStore({
   reducer: {
@@ -17,5 +17,6 @@ export const store = configureStore({
     liked: likedSlice,
     favourite: favouriteSlice,
     history: historySlice,
+    comments: commentSlice
   },
 });

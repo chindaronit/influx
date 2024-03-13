@@ -58,7 +58,6 @@ const watchlistSlice = createSlice({
       const { id } = action.payload;
       const updatedItems = state.movies.filter((item) => item.id !== id);
       state.movies = updatedItems;
-
       state.loading = false; // Set loading to false after updating the movies array
     },
   },

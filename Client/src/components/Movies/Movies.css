@@ -72,6 +72,11 @@
     font-size: large;
   }
 
+  .episode-number {
+    margin-top: 0.5rem;
+    opacity: 0.75;
+  }
+
   .btn-container {
     position: absolute;
     display: flex;

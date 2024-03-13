@@ -125,20 +125,25 @@ const Banner = ({ video, item, src, handleAlert, setText, endpoint, id }) => {
         </h1>
         <h3 className="subtitle">{item.tagline}</h3>
         <h4 className="overview">{item.overview}</h4>
-
         <div className="genre blue">
-          {item.genres.map((item, index, array) => {
+          {item.genres.map((item, index) => {
             return (
-              <React.Fragment key={item.id}>
+              <React.Fragment key={index}>
                 <h3>{item.name}</h3>
-                {index < array.length - 1 && <h3>|</h3>}
+                {<h3>|</h3>}
               </React.Fragment>
             );
           })}
+          <h3>IMDB: {item.vote_average.toFixed(1)}</h3>
         </div>
-
         <div className="watch-btn-container">
-          <Link to={`/stream/${endpoint}/${id}`}>
+          <Link
+            to={
+              endpoint === "tv"
+                ? `/stream/${endpoint}/${id}/1/1`
+                : `/stream/${endpoint}/${id}`
+            }
+          >
             <Button variant="contained" className="watch-btn">
               WATCH
             </Button>

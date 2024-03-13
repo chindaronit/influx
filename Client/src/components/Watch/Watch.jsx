@@ -5,6 +5,7 @@ import Banner from "./Banner";
 import Cast from "./Cast";
 import Clips from "./Clips";
 import Movies from "../Movies/Movies";
+import Seasons from "./Seasons";
 import "./Watch.css";
 
 const Watch = ({
@@ -22,6 +23,7 @@ const Watch = ({
   const [src, setSrc] = useState(null);
   const { url } = useSelector((state) => state.homePage);
   const [poster, setPoster] = useState(null);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
     if (url && item?.backdrop_path) {
@@ -36,6 +38,20 @@ const Watch = ({
     }
   }, [url, item]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const srcOrPoster = windowSize >= 1024 ? src : poster;
+
   return src && poster ? (
     <div className="container">
       <Banner
@@ -47,7 +63,15 @@ const Watch = ({
         endpoint={endpoint}
         id={id}
       />
+      {endpoint === "tv" && (
+        <Seasons
+          totalSeasons={parseInt(item.number_of_seasons)}
+          id={id}
+          src={srcOrPoster}
+        />
+      )}
       {<RelatedInfo item={item} crew={crew} poster={poster} />}
+
       <Cast cast={cast} />
       {video?.length > 0 && <Clips clips={video} />}
 

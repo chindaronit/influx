@@ -89,41 +89,41 @@
     margin-right: 1rem;
     padding: 1rem 5rem;
   }
+}
 
-  .side-btn {
-    position: relative;
-    .btn {
-      color: #1976d2;
-      min-width: 4rem;
-      min-height: 4rem;
-      border-radius: 50%;
-      padding: 0.5rem;
-      background-color: rgba(255, 255, 255);
-    }
-
-    .play-btn {
-      color: #1976d2;
-      min-width: 4rem;
-      min-height: 4rem;
-      border-radius: 50%;
-    }
-
-    .hover {
-      position: absolute;
-      background-color: white;
-      color: #1976d2;
-      padding: 1rem;
-      z-index: 1;
-      bottom: 100%;
-      border-radius: 0.5rem;
-      visibility: hidden;
-    }
+.side-btn {
+  position: relative;
+  .btn {
+    color: #1976d2;
+    min-width: 4rem;
+    min-height: 4rem;
+    border-radius: 50%;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255);
   }
 
-  .side-btn:hover {
-    .hover {
-      visibility: visible;
-    }
+  .play-btn {
+    color: #1976d2;
+    min-width: 4rem;
+    min-height: 4rem;
+    border-radius: 50%;
+  }
+
+  .hover {
+    position: absolute;
+    background-color: white;
+    color: #1976d2;
+    padding: 1rem;
+    z-index: 1;
+    bottom: 100%;
+    border-radius: 0.5rem;
+    visibility: hidden;
+  }
+}
+
+.side-btn:hover {
+  .hover {
+    visibility: visible;
   }
 }
 
@@ -581,6 +581,19 @@
   .character {
     color: #1976d2;
     font-size: small;
+  }
+}
+
+.season-select {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  select {
+    background-color: black;
+    color: white;
+    border-radius: 0.5rem;
+    width: 10rem;
+    padding: 0.5rem;
+    font-size: larger;
   }
 }
 

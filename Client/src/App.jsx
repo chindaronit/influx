@@ -67,12 +67,16 @@ function App() {
 
       <Routes>
         <Route path="*" element={<PageNotFound />} />
+
         <Route
           path="/"
           element={<Home handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route path="/profile" element={<Profile />} />
+
         <Route path="/search" element={<Search />} />
+
         <Route
           path="/search/:query"
           element={<ViewAll handleAlert={handleAlert} setText={setText} />}
@@ -81,42 +85,51 @@ function App() {
           path="/:media/:id"
           element={<LoadMovie handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/explore/:mediaType"
           element={<Explore handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/subscription"
           element={<Subscription handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/watchlist"
           element={
             <LoadWatchlist handleAlert={handleAlert} setText={setText} />
           }
         />
+
         <Route
           path="/liked"
           element={<LoadLiked handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/favourite"
           element={
             <LoadFavourite handleAlert={handleAlert} setText={setText} />
           }
         />
+
         <Route
           path="/history"
           element={<LoadHistory handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/filter"
           element={<Genre handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/section/trending/movie/week"
           element={<Trending handleAlert={handleAlert} setText={setText} />}
         />
+
         <Route
           path="/section/movie/top_rated"
           element={<TopRated handleAlert={handleAlert} setText={setText} />}
@@ -158,7 +171,11 @@ function App() {
           path="/section/trending/tv/week"
           element={<TrendingTv handleAlert={handleAlert} setText={setText} />}
         />
-        <Route path="/stream/:media/:id" element={<Stream />} />
+
+        <Route
+          path="/stream/:media/:id/:season/:episode"
+          element={<Stream handleAlert={handleAlert} setText={setText} />}
+        />
 
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
