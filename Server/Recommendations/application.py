@@ -2,8 +2,8 @@ import pickle
 import flask
 from flask_cors import CORS
 
-app = flask.Flask(__name__)
-CORS(app)
+application = flask.Flask(__name__)
+CORS(application)
 
 def recommend(movie):
     index = movies[movies['title'] == movie].index
@@ -19,7 +19,7 @@ def recommend(movie):
 movies = pickle.load(open('artifacts/movie_list.pkl','rb'))
 similarity = pickle.load(open('artifacts/similarity.pkl','rb'))
 
-@app.route('/', methods=['GET'])
+@application.route('/', methods=['GET'])
 def get_movie():
     movieId = flask.request.args.get('movieId')
     if movieId is None:
@@ -41,4 +41,4 @@ def get_movie():
         return flask.jsonify({'error': str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(port=8080)
+    application.run(port=3000)

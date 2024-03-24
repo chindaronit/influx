@@ -53,7 +53,6 @@ export const addToHistory = createAsyncThunk(
   "/history",
   async ({ email, token, media_type, id }, thunkAPI) => {
     try {
-     
       const res = await fetch(`${PORT}/history/api`, {
         method: "POST",
         headers: {
@@ -102,5 +101,5 @@ const historySlice = createSlice({
   },
 });
 
-export const { addMovie, addMovieList, removeMovie } = historySlice.actions;
+export const { removeMovie } = historySlice.actions;
 export default historySlice.reducer;

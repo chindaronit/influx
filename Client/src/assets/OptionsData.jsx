@@ -7,7 +7,7 @@ export const OptionsData = [
   {
     id: 1,
     value: "Recommended",
-    path: "/recommended?id=",
+    path: "recommendations",
     icon: RecommendIcon,
   },
   {

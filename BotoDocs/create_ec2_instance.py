@@ -28,8 +28,4 @@ def create_instance(type,server,src):
     print(server + ' Server Created! ')
     print("endpoint : "+ ec2.describe_instances(InstanceIds=[InstanceId])['Reservations'][0]['Instances'][0]['PublicDnsName']) 
 
-create_instance('t2.micro','User',user_src)
-
-
-
-
+create_instance('t3.large','Server_recommendation',user_src)

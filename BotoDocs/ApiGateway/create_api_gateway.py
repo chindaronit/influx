@@ -4,9 +4,12 @@ from GateWayResponses import *
 from Watchlist import watchlist_api
 from User import user_api
 from Subscription import subscription_api
+from History import history_api
+from Liked import liked_api
+from Favourite import favourite_api
+from Comments import  comment_api
 
 client = boto3.client('apigateway')
-client_v2=boto3.client('apigatewayv2')
 
 name='_influx_api_'
 description='API Gateway for microservies in influx'
@@ -17,7 +20,7 @@ contentType = 'application/json'
 Model='Empty'
 stageName='dev'
 
-url='http://ec2-3-108-53-152.ap-south-1.compute.amazonaws.com/'
+url='http://ec2-13-201-76-76.ap-south-1.compute.amazonaws.com/'
 print("started creating Api Gateway...")
 
 apiId=create_api(client,name,description,version,endpointConfigurationType)
@@ -28,6 +31,25 @@ resourceId=get_parent_id(client,apiId,'/')
 # ***************************************************************
  
 watchlist_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
+
+
+# ***************************************************************
+#                     /history
+# ***************************************************************
+ 
+history_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
+
+# ***************************************************************
+#                     /liked
+# ***************************************************************
+ 
+liked_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
+
+# ***************************************************************
+#                     /favourite
+# ***************************************************************
+ 
+favourite_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
 
 # ***************************************************************
 #                     /user
@@ -40,6 +62,12 @@ user_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
 # ***************************************************************
 
 subscription_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
+
+# ***************************************************************
+#                     /comments
+# ***************************************************************
+
+comment_api(client,apiId,resourceId,authorizationType,contentType,Model,url)
 
 create_deployement(client,apiId,stageName)
 print("successfully Deployed API...")

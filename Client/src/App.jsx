@@ -31,6 +31,7 @@ import PageNotFound from "./components/404/PageNotFound";
 import Profile from "./components/Profile/Profile";
 import StreamTv from "./components/Stream/StreamTv";
 import StreamMovie from "./components/Stream/StreamMovie";
+import Recommendations from "./components/Recommendations/Recommendations";
 import "./App.css";
 
 function App() {
@@ -178,6 +179,13 @@ function App() {
         <Route
           path="/stream/:media/:id/:seasonCount/:season/:episode"
           element={<StreamTv />}
+        />
+
+        <Route
+          path="/section/recommendations"
+          element={
+            <Recommendations handleAlert={handleAlert} setText={setText} />
+          }
         />
 
         <Route path="/signin" element={<Signin />} />

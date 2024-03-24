@@ -59,14 +59,13 @@ const ViewAll = ({ handleAlert, setText }) => {
                     {data?.results.map((item, index) => {
                       if (item.media_type === "person") return;
                       return (
-                        <div className="item" key={index}>
-                          <Slide
-                            data={item}
-                            endpoint={item.media_type}
-                            handleAlert={handleAlert}
-                            setText={setText}
-                          />
-                        </div>
+                        <Slide
+                          data={item}
+                          endpoint={item.media_type}
+                          handleAlert={handleAlert}
+                          setText={setText}
+                          key={index}
+                        />
                       );
                     })}
                   </div>
